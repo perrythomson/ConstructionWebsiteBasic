@@ -29,6 +29,8 @@ looking for qualified laborers, framers, and much more.  Please fill out the for
         </div>
     </form>
     <input type="submit" value="Submit your information!">
+
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 </form>
 
 <br><br><br><br><br><br><br><br>

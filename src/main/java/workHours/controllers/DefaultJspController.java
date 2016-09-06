@@ -17,9 +17,14 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class DefaultJspController {
 
+//    @RequestMapping(value="/")
+//    public View jspHomePage() {
+//        return new RedirectView("/homePage");
+//    }
+
     @RequestMapping(value="/")
-    public View jspHomePage() {
-        return new RedirectView("/homePage/");
+    String homePage() {
+        return "home/homePage";
     }
 
     @RequestMapping(value="/login")

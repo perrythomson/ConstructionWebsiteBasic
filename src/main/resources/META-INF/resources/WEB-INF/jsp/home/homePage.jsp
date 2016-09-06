@@ -11,8 +11,10 @@
 <body>
 <h1>BFE Construction</h1>
 
-
+Test to see if this works
+<%--TODO--%>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <br><br><br><br><br><br><br><br>
-<a href="/login/">login</a> | <a href="/">Past Projects</a> | <a href="/">Contact Us</a>| <a href="/">Employment Opportunities</a>
+<a href="/login/">login</a> | <a href="/pastProjects/">Past Projects</a> | <a href="/contactUs/">Contact Us</a>| <a href="/employmentOpportunities/">Employment Opportunities</a>
 </body>
 </html>
