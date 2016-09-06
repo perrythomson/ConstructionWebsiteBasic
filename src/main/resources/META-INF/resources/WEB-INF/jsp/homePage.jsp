@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
     <title>Home Page</title>
-    <link href="/frontEndFiles/css/homePage.css" rel="stylesheet" type="text/css" />
+    <link href="/META-INF/resources/frontEndFiles/css/homePage.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>

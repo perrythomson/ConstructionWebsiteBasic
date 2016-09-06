@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Login</title>
-    <link href="/frontEndFiles/css/login.css" rel="stylesheet" type="text/css" />
+    <link href="/META-INF/resources/frontEndFiles/css/login.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
