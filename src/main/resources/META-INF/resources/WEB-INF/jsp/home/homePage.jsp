@@ -15,6 +15,6 @@ Test to see if this works
 <%--TODO--%>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <br><br><br><br><br><br><br><br>
-<a href="/login/">login</a> | <a href="/pastProjects/">Past Projects</a> | <a href="/contactUs/">Contact Us</a>| <a href="/employmentOpportunities/">Employment Opportunities</a>
+<a href="/login">login</a> | <a href="/home/pastProjects/">Past Projects</a> | <a href="/home/contactUs/">Contact Us</a>| <a href="/home/employmentOpportunities/">Employment Opportunities</a>
 </body>
 </html>

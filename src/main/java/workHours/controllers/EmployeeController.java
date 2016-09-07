@@ -33,5 +33,13 @@ public class EmployeeController {
         this.timeSheetTrackerDAO = timeSheetTrackerDAO;
     }
 
+    @RequestMapping(value="/")
+    public String defaultPage(ModelMap model) {
+        return timeEntry(model);
+    }
 
+    @RequestMapping(value="timeEntry")
+    public String timeEntry(ModelMap model) {
+        return "employee/employeeTimeEntry";
+        }
 }

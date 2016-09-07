@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/home/")
 public class HomeController {
 
-    @RequestMapping(value="/")
-    public String dashboard(ModelMap model) {
-        return "home/homePage";
-    }
+     @RequestMapping(value="/")
+     public String homePage(ModelMap model) {
+            return "home/homePage";
+     }
+
+     @RequestMapping(value="/contactUs")
+     public String contactUs(ModelMap model) {
+            return "home/contactUs";
+     }
 }
