@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/home/")
 public class HomeController {
 
+//    @RequestMapping(value="/")
+//    public String index() {
+//        return "index";
+//    }
+
      @RequestMapping(value="/")
      public String homePage(ModelMap model) {
             return "home/homePage";
@@ -21,5 +26,15 @@ public class HomeController {
      @RequestMapping(value="/contactUs")
      public String contactUs(ModelMap model) {
             return "home/contactUs";
+     }
+
+     @RequestMapping(value="/employmentOpportunities")
+     public String employmentOpportunities() {
+         return "home/employmentOpportunities";
+     }
+
+     @RequestMapping(value="/pastProjects")
+     public String pastProjects() {
+        return "home/pastProjects";
      }
 }

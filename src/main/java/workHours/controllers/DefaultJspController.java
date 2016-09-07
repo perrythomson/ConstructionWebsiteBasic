@@ -18,9 +18,15 @@ import javax.servlet.http.HttpServletResponse;
 public class DefaultJspController {
 
     @RequestMapping(value="/")
-    public View jspHomePage() {
-        return new RedirectView("/home/homePage");
+    public String homePage() {
+//        return "index";
+        return "home/homePage";
     }
+
+//    @RequestMapping(value="/")
+//    public View jspHomePage() {
+//        return new RedirectView("/home/homePage");
+//    }
 
 //    @RequestMapping(value="/")
 //    String homePage() {
@@ -39,6 +45,6 @@ public class DefaultJspController {
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         request.setAttribute("logout","logout");
-        return "login";
+        return "home/homePage";
     }
 }

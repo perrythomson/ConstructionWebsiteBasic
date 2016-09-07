@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
     <title>Home Page</title>
-    <link href="/META-INF/resources/frontEndFiles/css/employmentOpportunities.css" rel="stylesheet" type="text/css" />
+    <link href="/frontEndFiles/css/employmentOpportunities.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -17,14 +17,14 @@ looking for qualified laborers, framers, and much more.  Please fill out the for
 
 <form name = "employmentSignUpForm" method="POST" action="/register">
 
-    Email:      <input type="text" name="email"   value="${email}">"    /><br/><br/>
-    Name:       <input type="text" name="name"    value="${name}">"     /><br/><br/>
-    Phone:      <input type="text" name="phone"   value='${phone}'>"   /><br/><br/>
-    Job Experience:     <input type="text" name="jobExperience"   value='${jobExperience}'>"   /><br/><br/>
+    Email:      <input type="text" name="email"   value="${email}">    <br/><br/>
+    Name:       <input type="text" name="name"    value="${name}">     <br/><br/>
+    Phone:      <input type="text" name="phone"   value='${phone}'>    <br/><br/>
+    <%--Job Experience:     <input type="text" name="jobExperience"   value='${jobExperience}'>"   /><br/><br/>--%>
 <%--TODO figure out if text box to be saved in db--%>
     <form>
         <div class="form-group">
-            <label for="comment">Job Experience:</label>
+            <label for="comment">Job Experience:</label><br><br><br><br><br>
             <textarea class="form-control" rows="5" id="comment"></textarea>
         </div>
     </form>
@@ -34,6 +34,6 @@ looking for qualified laborers, framers, and much more.  Please fill out the for
 </form>
 
 <br><br><br><br><br><br><br><br>
-<a href="/login/">login</a> | <a href="/">Past Projects</a> | <a href="/">Contact Us</a>
+<a href="/login">login</a> | <a href="/home/pastProjects/">Past Projects</a> | <a href="/home/contactUs/">Contact Us</a>| <a href="/">Home</a>
 </body>
 </html>

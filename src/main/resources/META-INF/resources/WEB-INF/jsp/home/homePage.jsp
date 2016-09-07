@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
     <title>Home Page</title>
-    <link href="/META-INF/resources/frontEndFiles/css/homePage.css" rel="stylesheet" type="text/css" />
+    <link href="/frontEndFiles/css/homePage.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -13,8 +13,8 @@
 
 Test to see if this works
 <%--TODO--%>
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <br><br><br><br><br><br><br><br>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 <a href="/login">login</a> | <a href="/home/pastProjects/">Past Projects</a> | <a href="/home/contactUs/">Contact Us</a>| <a href="/home/employmentOpportunities/">Employment Opportunities</a>
 </body>
 </html>
