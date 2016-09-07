@@ -19,7 +19,7 @@ public class DefaultJspController {
 
     @RequestMapping(value="/")
     public View jspHomePage() {
-        return new RedirectView("/homePage");
+        return new RedirectView("/home/homePage");
     }
 
 //    @RequestMapping(value="/")
