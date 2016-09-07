@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
     <title>Employee Time Entry Page</title>
-    <link href="/META-INF/resources/frontEndFiles/css/homePage.css" rel="stylesheet" type="text/css" />
+    <link href="/frontEndFiles/css/employeeContactInfo.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -38,6 +38,8 @@
 <br><br>
 
 <br><br><br><br><br><br><br><br>
-<a href="/">Home Page</a> | <a href="/home/pastProjects">Past Projects</a> | <a href="/home/contactUs">Contact Us</a>| <a href="/home/employmentOpportunities">Employment Opportunities</a> | <a href="/logout">Log Out</a>
+<a href="/">Home Page</a> | <a href="/home/pastProjects">Past Projects</a>
+| <a href="/home/contactUs">Contact Us</a>| <a href="/home/employmentOpportunities">Employment Opportunities</a>
+| <a href="/logout">Log Out</a>
 </body>
 </html>

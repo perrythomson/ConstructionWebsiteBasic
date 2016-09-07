@@ -38,8 +38,14 @@ public class EmployeeController {
         return timeEntry(model);
     }
 
+
     @RequestMapping(value="timeEntry")
     public String timeEntry(ModelMap model) {
         return "employee/employeeTimeEntry";
         }
+
+    @RequestMapping(value="/updateContactInfo")
+    public String updateContactInfo(ModelMap model) {
+        return updateContactInfo(model);
+    }
 }

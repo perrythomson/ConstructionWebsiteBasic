@@ -17,9 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class DefaultJspController {
 
+//    @RequestMapping(value="/")
+//    public String homePage() {
+//        return "index";
+//    }
+
     @RequestMapping(value="/")
     public String homePage() {
-//        return "index";
         return "home/homePage";
     }
 

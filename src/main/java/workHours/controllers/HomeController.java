@@ -18,10 +18,11 @@ public class HomeController {
 //        return "index";
 //    }
 
-     @RequestMapping(value="/")
-     public String homePage(ModelMap model) {
-            return "home/homePage";
-     }
+
+    @RequestMapping(value="/")
+    public String homePage(ModelMap model) {
+        return "home/homePage";
+    }
 
      @RequestMapping(value="/contactUs")
      public String contactUs(ModelMap model) {

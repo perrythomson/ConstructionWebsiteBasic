@@ -24,16 +24,17 @@ looking for qualified laborers, framers, and much more.  Please fill out the for
 <%--TODO figure out if text box to be saved in db--%>
     <form>
         <div class="form-group">
-            <label for="comment">Job Experience:</label><br><br><br><br><br>
+            <label for="comment">Job Experience:</label><br><br>
             <textarea class="form-control" rows="5" id="comment"></textarea>
         </div>
     </form>
     <input type="submit" value="Submit your information!">
 
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
 </form>
 
 <br><br><br><br><br><br><br><br>
-<a href="/login">login</a> | <a href="/home/pastProjects/">Past Projects</a> | <a href="/home/contactUs/">Contact Us</a>| <a href="/">Home</a>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+<a href="/login">login</a> | <a href="/home/pastProjects">Past Projects</a> | <a href="/home/contactUs">Contact Us</a>| <a href="/">Home</a>
 </body>
 </html>
