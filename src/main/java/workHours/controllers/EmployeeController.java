@@ -44,7 +44,7 @@ public class EmployeeController {
         return "employee/employeeTimeEntry";
         }
 
-    @RequestMapping(value="/updateContactInfo")
+    @RequestMapping(value="updateContactInfo")
     public String updateContactInfo(ModelMap model) {
         return updateContactInfo(model);
     }
