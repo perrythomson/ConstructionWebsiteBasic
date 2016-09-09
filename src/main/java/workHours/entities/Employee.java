@@ -14,9 +14,9 @@ import java.util.Set;
 @Table(name = "employee")
 public class Employee {
 
+
     @Id
     private String employeeID;
-
     @NotNull  //forces it to be populated
     private String email;
 

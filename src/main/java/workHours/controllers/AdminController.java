@@ -50,9 +50,9 @@ public class AdminController {
     }
 
     @RequestMapping(value="saveNewEmployee")
-    public View saveNewEmployee(Employee employee) {
+    public String saveNewEmployee(Employee employee) {
         employeeDAO.save(employee);
-        return new RedirectView("/admin/");
+        return "/admin/";
     }
 
     @RequestMapping(value="viewEmployee")                   //TODO can edit too

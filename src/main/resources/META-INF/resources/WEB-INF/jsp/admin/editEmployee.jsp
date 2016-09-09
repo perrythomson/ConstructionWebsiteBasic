@@ -10,7 +10,7 @@ Edit Employee
 
 Edit Owner
 <br><br>
-<form name="updateEmployeeForm" method="POST" action="/updateEmployee">
+<form name="updateEmployeeForm" method="POST" action="/admin/updateEmployee">
     Employee ID: <input type="text" name="employeeID" value="<c:out value="${employee.employeeID}" />" readonly /><br>
     First Name: <input type="text" name="firstname" value="<c:out value="${employee.firstName}" />" /><br>
     Last Name: <input type="text" name="lastname" value="<c:out value="${employee.lastName}" />" /><br>
@@ -25,14 +25,15 @@ Edit Owner
 <ul>
     <li>
         <a href="/">HOME</a>
-        <a href="/addNewEmployee"> Add New Employee </a>
-        <a href="/editEmployee"> Edit Employee </a>
-        <a href="/viewAllEmployees"> View All Employees </a>
-        <a href="/viewEmployee"> View Employee </a>
+        <a href="/admin/addNewEmployee"> Add New Employee </a>
+        <%--<a href="/editEmployee"> Edit Employee </a>--%>
+        <a href="/admin/viewAllEmployees"> View All Employees </a>
+        <a href="/admin/viewEmployee"> View Employee </a>
     </li>
 </ul>
 
 <br><br>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 </body>
 </html>

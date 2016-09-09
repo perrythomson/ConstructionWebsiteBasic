@@ -38,6 +38,8 @@
 <br><br>
 
 <br><br><br><br><br><br><br><br>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
 <a href="/">Home Page</a> | <a href="/home/pastProjects">Past Projects</a>
 | <a href="/home/contactUs">Contact Us</a>| <a href="/home/employmentOpportunities">Employment Opportunities</a>
 | <a href="/logout">Log Out</a>

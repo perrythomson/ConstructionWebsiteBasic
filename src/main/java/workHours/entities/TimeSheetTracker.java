@@ -1,90 +1,124 @@
 package workHours.entities;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import org.springframework.data.repository.CrudRepository;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
-import java.util.ArrayList;
-import java.util.HashMap;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.sql.Date;
 
 
 @Entity
 @Table(name = "time_sheet_tracker")
 public class TimeSheetTracker {
 
-    private int hours;
-    private int days;
+    @Id
+    private long timeSheetID;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO) //this auto populates ID
-    private long id;
+    private java.sql.Date loginDate; //TODO do I really need this?
 
-    @NotNull  //forces it to be populated
-    private String email;
+    @Id
+    private String startTime;
 
-    @NotNull
-    private String firstName;
+    @Id
+    private String endTime;
 
-    @NotNull
-    private String lastName;
+    @Id
+    private String lunchStart;
+
+    @Id
+    private String lunchEnd;
+
+    private String task;
+
+    private String totalDayHours;
+
+    private String totalWeeklyHours;
 
 
     public TimeSheetTracker() { }
 
-    public TimeSheetTracker(long id) {
-        this.id = id;
+    public TimeSheetTracker(long timeSheetID) {
+        this.timeSheetID = timeSheetID;
     }
 
-    public TimeSheetTracker(String email, String firstName, String lastName) {
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public TimeSheetTracker(String startTime, String endTime, String lunchStart, String lunchEnd, String task, String totalDayHours, String totalWeeklyHours) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.lunchStart = lunchStart;
+        this.lunchEnd = lunchEnd;
+        this.task = task;
+        this.totalDayHours = totalDayHours;
+        this.totalWeeklyHours = totalWeeklyHours;
     }
 
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
+    public Date getLoginDate() {
+        return loginDate;
     }
 
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
+    public void setLoginDate(Date loginDate) {
+        this.loginDate = loginDate;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public int getHours() {
-        return hours;
-    }
-    public void setHours(int hours) {
-        this.hours = hours;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public int getDays() {
-        return days;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
     }
-    public void setDays(int days) {
-        this.days = days;
+
+    public String getLunchStart() {
+        return lunchStart;
+    }
+
+    public void setLunchStart(String lunchStart) {
+        this.lunchStart = lunchStart;
+    }
+
+    public String getLunchEnd() {
+        return lunchEnd;
+    }
+
+    public void setLunchEnd(String lunchEnd) {
+        this.lunchEnd = lunchEnd;
+    }
+
+    public String getTask() {
+        return task;
+    }
+
+    public void setTask(String task) {
+        this.task = task;
+    }
+
+    public String getTotalDayHours() {
+        return totalDayHours;
+    }
+
+    public void setTotalDayHours(String totalDayHours) {
+        this.totalDayHours = totalDayHours;
+    }
+
+    public String getTotalWeeklyHours() {
+        return totalWeeklyHours;
+    }
+
+    public void setTotalWeeklyHours(String totalWeeklyHours) {
+        this.totalWeeklyHours = totalWeeklyHours;
+    }
+
+    public long getTimeSheetID() {
+        return timeSheetID;
+    }
+
+    public void setTimeSheetID(long timeSheetID) {
+        this.timeSheetID = timeSheetID;
     }
 }

@@ -7,19 +7,21 @@
 </head>
 <body>
 
+ADMIN HOME PAGE
+
 <table>
     <tr>
-        <th>Employee ID</th> |
-        <th>First Name</th> |
-        <th>Last Name</th> |
-        <th>Phone</th> |
-        <th>Address</th> |
-        <th>Salary</th>
+        <th> Employee ID |</th>
+        <th> First Name |</th>
+        <th> Last Name |</th>
+        <th> Phone |</th>
+        <th> Address |</th>
+        <th> Salary</th>
+
 
     </tr>
     <c:forEach items="${employees}" var="employees">
         <tr>
-            <%--TODO make sure that this href is correct for employeeID instead of employeeid--%>
             <td><a href="/viewEmployee?employeeID=${employee.employeeID}"><c:out value="${employee.employeeID}" /></a></td>
             <td><c:out value="${employee.firstName}" /> | </td>
             <td><c:out value="${employee.lastName}" /> | </td>
@@ -34,14 +36,17 @@
 <ul>
     <li>
         <a href="/">HOME</a>
-        <a href="/addNewEmployee"> Add New Employee </a>
-        <a href="/editEmployee"> Edit Employee </a>
-        <a href="/viewAllEmployees"> View All Employees </a>
-        <a href="/viewEmployee"> View Employee </a>
+        <a href="/admin/addNewEmployee"> Add New Employee  |</a>
+        <a href="/admin/viewAllPayPeriods"> View All Pay Periods  |</a>
+        <%--<a href="/admin/view"> Add New Employee  |</a>--%>
+        <%--<a href="/admin/editEmployee"> Edit Employee  |</a>--%>
+        <%--<a href="/admin/viewAllEmployees"> View All Employees  |</a>--%>
+        <%--<a href="/admin/viewEmployee"> View Employee  |</a>--%>
     </li>
 </ul>
 
 <br><br>
+<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 
 </body>
 </html>

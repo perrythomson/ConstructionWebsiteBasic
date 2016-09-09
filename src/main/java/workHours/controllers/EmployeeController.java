@@ -33,19 +33,29 @@ public class EmployeeController {
         this.timeSheetTrackerDAO = timeSheetTrackerDAO;
     }
 
+//    TODO understand mapping and code to get info from db for signin person
     @RequestMapping(value="/")
     public String defaultPage(ModelMap model) {
         return timeEntry(model);
     }
 
-
     @RequestMapping(value="timeEntry")
     public String timeEntry(ModelMap model) {
-        return "employee/employeeTimeEntry";
+        return "/employee/";
         }
 
-    @RequestMapping(value="updateContactInfo")
-    public String updateContactInfo(ModelMap model) {
-        return updateContactInfo(model);
+    @RequestMapping(value="editEmployeeContactInfo")                //this mapping occurs when edit Contact Information is selected on the main employee time entry page
+    public String editEmployeeContactInformation(ModelMap model) {
+        return "editEmployee.jsp";
     }
+
+    @RequestMapping(value = "updateEmployee")                       //this occurs when the submit button is hit and will return to main timeEntry page
+    public String updateEmployee(ModelMap model) {
+        return "/employee/";
+    }
+
+//    @RequestMapping(value="employeeContactInfo")
+//    public String viewContactInfo(ModelMap model) {
+//        return viewContactInfo(model);
+//    }
 }
