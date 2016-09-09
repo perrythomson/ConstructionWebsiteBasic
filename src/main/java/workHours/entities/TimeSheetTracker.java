@@ -1,32 +1,42 @@
 package workHours.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import org.springframework.data.repository.CrudRepository;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 
 @Entity
 @Table(name = "time_sheet_tracker")
 public class TimeSheetTracker {
 
+
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO) //auto populates timeSheetID
     private long timeSheetID;
 
-    @Id
-    private java.sql.Date loginDate; //TODO do I really need this?
+//    @NotNull
+//    private java.sql.Date loginDate; //TODO do I really need this?
 
-    @Id
+    @NotNull
     private String startTime;
 
-    @Id
+    @NotNull
     private String endTime;
 
-    @Id
     private String lunchStart;
 
-    @Id
     private String lunchEnd;
 
+    @NotNull
     private String task;
 
     private String totalDayHours;
@@ -50,13 +60,13 @@ public class TimeSheetTracker {
         this.totalWeeklyHours = totalWeeklyHours;
     }
 
-    public Date getLoginDate() {
-        return loginDate;
-    }
-
-    public void setLoginDate(Date loginDate) {
-        this.loginDate = loginDate;
-    }
+//    public Date getLoginDate() {
+//        return loginDate;
+//    }
+//
+//    public void setLoginDate(Date loginDate) {
+//        this.loginDate = loginDate;
+//    }
 
     public String getStartTime() {
         return startTime;

@@ -41,21 +41,21 @@ public class EmployeeController {
 
     @RequestMapping(value="timeEntry")
     public String timeEntry(ModelMap model) {
-        return "/employee/";
+        return "employee/employeeTimeEntry";
         }
 
-    @RequestMapping(value="editEmployeeContactInfo")                //this mapping occurs when edit Contact Information is selected on the main employee time entry page
+    @RequestMapping(value="editEmployeeContactInfo")
     public String editEmployeeContactInformation(ModelMap model) {
-        return "editEmployee.jsp";
+        return editEmployeeContactInformation(model);
     }
 
-    @RequestMapping(value = "updateEmployee")                       //this occurs when the submit button is hit and will return to main timeEntry page
+    @RequestMapping(value="employeeContactInfo")
+    public String viewContactInfo(ModelMap model) {
+        return viewContactInfo(model);
+    }
+
+    @RequestMapping(value = "updateEmployee")
     public String updateEmployee(ModelMap model) {
         return "/employee/";
     }
-
-//    @RequestMapping(value="employeeContactInfo")
-//    public String viewContactInfo(ModelMap model) {
-//        return viewContactInfo(model);
-//    }
 }
