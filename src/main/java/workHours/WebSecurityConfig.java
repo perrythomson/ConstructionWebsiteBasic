@@ -22,7 +22,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/login").defaultSuccessUrl("/default") //this routes to the defaultController to assess roleType
                 .permitAll()
                 .and()
                 .logout()
@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("bob").password("pass").roles("USER");
-        auth.inMemoryAuthentication().withUser("sally").password("pass").roles("USER");
+        auth.inMemoryAuthentication().withUser("bob").password("pass").roles("ADMIN");
+        auth.inMemoryAuthentication().withUser("sally").password("pass").roles("EMPLOYEE");
     }
 }

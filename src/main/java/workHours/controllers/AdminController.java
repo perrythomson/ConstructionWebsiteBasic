@@ -12,6 +12,7 @@ import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 import workHours.entities.Employee;
 import workHours.entities.EmployeeDAO;
+import workHours.entities.TimeSheetTracker;
 import workHours.entities.TimeSheetTrackerDAO;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -75,18 +76,16 @@ public class AdminController {
         return new RedirectView("/admin/");
     }
 
-    @RequestMapping("uploadEmployees")         //jsp needs to be created TODO
+    @RequestMapping("uploadEmployees")
     public String uploadEmployees() {       //passing string on to a jsp to view
         return "admin/uploadEmployees";
     }
 
     @RequestMapping("saveUploadedEmployees")
-    public View saveUploadedEmployees(MultipartFile EmployeesFile) {  //multipartfile is one of the types of things I can pass from the method
-        //can be a json file or image, etc, anything that has its own stuff
-        //TODO research View from signature
+    public View saveUploadedEmployees(MultipartFile EmployeesFile) {
         String returnView = "";
         if (!EmployeesFile.isEmpty()) {
-            try {//(below) get current file name...get contents
+            try {
                 String pathString = "/Users/perrythomson/UPLOADS_Capstone_Employees/"; //TODO create string for the try statement
                 Files.write(Paths.get(pathString+EmployeesFile.getOriginalFilename()),EmployeesFile.getBytes());
                 System.out.println("-------- File Upload Successful");
@@ -119,6 +118,53 @@ public class AdminController {
             ioe.printStackTrace();
         }
     }
+
+    @RequestMapping("uploadTimeSheet")         //jsp needs to be created TODO
+    public String uploadTimeSheet() {       //passing string on to a jsp to view
+        return "admin/viewAllTimeSheets";
+    }
+
+    @RequestMapping("saveUploadedTimeSheet")
+    public View saveUploadedTimeSheet(MultipartFile TimeSheetsFile) {  //multipartfile is one of the types of things I can pass from the method
+        //can be a json file or image, etc, anything that has its own stuff
+        //TODO research View from signature
+        String returnView = "";
+        if (!TimeSheetsFile.isEmpty()) {
+            try {//(below) get current file name...get contents
+                String pathString = "/Users/perrythomson/UPLOADS_Capstone_TimeSheets/"; //TODO create string for the try statement
+                Files.write(Paths.get(pathString+TimeSheetsFile.getOriginalFilename()),TimeSheetsFile.getBytes());
+                System.out.println("-------- File Upload Successful");
+                addUploadTimeSheetToDatabase(pathString+TimeSheetsFile.getOriginalFilename()); //passing the file location which need to be the same as 2 lines above
+            } catch (IOException | RuntimeException e) {                    //two exceptions at once J8 short code
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("-------- File Is EMPTY!");
+        }
+        return new RedirectView("/admin/");
+    }
+
+    private void addUploadTimeSheetToDatabase(String filePath) {
+        try {
+            Path timeSheetUploadedFilePath = Paths.get(filePath);
+            ObjectMapper mapper = new ObjectMapper();  //map json to entities
+            List<TimeSheetTracker> uploadedEmployeeTimeSheets = mapper.readValue(Files.newInputStream(timeSheetUploadedFilePath), new TypeReference<List<TimeSheetTracker>>(){});
+            for(TimeSheetTracker uploadedEmployeeTimeSheet : uploadedEmployeeTimeSheets) {  //creating new id's so that it doesn't barf and error
+                TimeSheetTracker timeSheetTracker = new TimeSheetTracker();
+                timeSheetTracker.setStartTime(uploadedEmployeeTimeSheet.getStartTime());
+                timeSheetTracker.setEndTime(uploadedEmployeeTimeSheet.getEndTime());
+                timeSheetTracker.setLunchStart(uploadedEmployeeTimeSheet.getLunchStart());
+                timeSheetTracker.setLunchEnd(uploadedEmployeeTimeSheet.getLunchEnd());
+                timeSheetTracker.setTask(uploadedEmployeeTimeSheet.getTask());
+                timeSheetTracker.setTotalDayHours(uploadedEmployeeTimeSheet.getTotalDayHours());
+                timeSheetTrackerDAO.save(timeSheetTracker);
+            }
+        } catch (IOException ioe) {
+            System.out.println("Issue reading List from JSON file");
+            ioe.printStackTrace();
+        }
+    }
+
 
 }
 

@@ -51,4 +51,14 @@ public class DefaultJspController {
         request.setAttribute("logout","logout");
         return "home/homePage";
     }
+
+    //this handles the role Type can put in foreman later
+    @RequestMapping("/default")
+    public String defaultAfterLogin(HttpServletRequest request) {
+        if(request.isUserInRole("ADMIN")) {
+            return "redirect:/admin/";
+        }
+        return "redirect:/employee/";
+    }
+
 }
