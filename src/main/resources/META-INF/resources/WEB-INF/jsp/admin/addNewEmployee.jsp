@@ -14,7 +14,9 @@ Add Employee
     Last Name: <input type="text" name="lastname" /><br>
     Phone: <input type="text" name="phone" /><br>
     Address: <input type="text" name="address" /><br>
+    Email: <input type="email" name="email" /><br>
     Salary: <input type="text" name="salary" /><br>
+
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     <input type="submit">
 
@@ -28,6 +30,7 @@ Add Employee
         <%--<a href="/admin/addNewEmployee"> Add New Employee </a>--%>
         <%--<a href="/admin/editEmployee"> Edit Employee </a>--%>
         <%--<a href="/admin/viewEmployee"> View Employee </a>--%>
+        <a href="/logout">Log Out</a>
     </li>
 </ul>
 

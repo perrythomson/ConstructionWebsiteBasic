@@ -16,7 +16,9 @@ public class Employee {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String employeeID;
+
     @NotNull  //forces it to be populated
     private String email;
 
@@ -35,10 +37,8 @@ public class Employee {
     @NotNull
     private int salary;
 
-    @NotNull
     private String password;
 
-    @NotNull
     private HashSet<RoleType> roles = new HashSet<RoleType>();
 
     public Employee() {
@@ -51,6 +51,7 @@ public class Employee {
         this.lastName = lastName;
         this.phone = phone;
         this.address = address;
+        this.email = email;
         this.salary = salary;
         roles.add(RoleType.EMPLOYEE);
     }

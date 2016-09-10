@@ -42,6 +42,7 @@ ADMIN HOME PAGE
         <%--<a href="/admin/editEmployee"> Edit Employee  |</a>--%>
         <%--<a href="/admin/viewAllEmployees"> View All Employees  |</a>--%>
         <%--<a href="/admin/viewEmployee"> View Employee  |</a>--%>
+        <a href="/logout">Log Out</a>
     </li>
 </ul>
 
