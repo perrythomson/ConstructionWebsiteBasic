@@ -16,6 +16,10 @@
 
 <table>
     <tr>
+        <td>RoleType:</td>
+        <td><c:out value="${employee.roleType}" /></td>
+    </tr>
+    <tr>
         <td>ID:</td>
         <td><c:out value="${employee.employeeID}" /></td>
     </tr>
@@ -34,6 +38,10 @@
     <tr>
         <td>Address:</td>
         <td><c:out value="${employee.address}" /></td>
+    </tr>
+    <tr>
+        <td>Email Address:</td>
+        <td><c:out value="${employee.email}" /></td>
     </tr>
 </table>
 

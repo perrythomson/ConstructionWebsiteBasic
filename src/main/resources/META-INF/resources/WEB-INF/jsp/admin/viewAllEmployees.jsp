@@ -39,7 +39,8 @@ ADMIN HOME PAGE
         <a href="/admin/addNewEmployee"> Add New Employee  |</a>
         <a href="/admin/viewAllPayPeriods"> View All Pay Periods  |</a>
         <%--<a href="/admin/view"> Add New Employee  |</a>--%>
-        <%--<a href="/admin/editEmployee"> Edit Employee  |</a>--%>
+        <a href="/admin/editEmployee"> Edit Employee  |</a>
+        <%--TODO Delete Employee--%>
         <%--<a href="/admin/viewAllEmployees"> View All Employees  |</a>--%>
         <%--<a href="/admin/viewEmployee"> View Employee  |</a>--%>
         <a href="/logout">Log Out</a>

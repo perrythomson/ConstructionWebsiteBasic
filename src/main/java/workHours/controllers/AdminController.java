@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
-import workHours.entities.Employee;
-import workHours.entities.EmployeeDAO;
-import workHours.entities.TimeSheetTracker;
-import workHours.entities.TimeSheetTrackerDAO;
+import workHours.entities.*;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,6 +45,7 @@ public class AdminController {
     @RequestMapping(value="addNewEmployee")
     public String addNewEmployee(ModelMap model) {
         model.addAttribute("employee", new Employee());
+        model.addAttribute("roleTypes", RoleType.values());
         return "admin/addNewEmployee";
     }
 
