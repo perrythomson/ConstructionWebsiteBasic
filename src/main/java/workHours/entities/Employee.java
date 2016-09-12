@@ -17,7 +17,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String employeeID;
+    private Long employeeID;
 
     @NotNull  //forces it to be populated
     private String email;
@@ -35,7 +35,7 @@ public class Employee {
     private String address;
 
     @NotNull
-    private int salary;
+    private double salary;
 
     private String password;
 
@@ -44,7 +44,7 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee (String employeeID, String password, String firstName, String lastName, String email, String phone, String address, int salary) {
+    public Employee (Long employeeID, String password, String firstName, String lastName, String email, String phone, String address, double salary) {
         this.employeeID = employeeID;
         this.password = password;
         this.firstName = firstName;
@@ -52,7 +52,7 @@ public class Employee {
         this.phone = phone;
         this.address = address;
         this.email = email;
-        this.salary = salary;
+        this.salary = salary;  //TODO BigDecimal exclusive for banking its an object  i.e. salary.add
         roles.add(RoleType.EMPLOYEE);
     }
 
@@ -63,10 +63,10 @@ public class Employee {
         this.roles = roles;
     }
 
-    public String getEmployeeID() {
+    public Long getEmployeeID() {
         return employeeID;
     }
-    public void setEmployeeID(String employeeID) {
+    public void setEmployeeID(Long employeeID) {
         this.employeeID = employeeID;
     }
 
@@ -105,10 +105,17 @@ public class Employee {
         this.address = address;
     }
 
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

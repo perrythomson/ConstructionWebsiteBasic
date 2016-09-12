@@ -61,10 +61,11 @@
                 <th>Work Done</th>
                 <th>Total Hours</th>
             </tr>
-            <%--TODO check to see if this for loop will define the entries to only 7 within the week --%>
+            <%--check to see if this for loop will define the entries to only 7 within the week --%>
             <%for(int j = 0; j < 7; j++){ %>
             <tr> <td><input type="text" name="employeeID" required="required" /></td>
-                 <td><input type="date" id="date" name="date"/></td>
+                 <td><input type=week step=2 min=2014-W30></td>
+                 <%--<td><input type="date" id="date" name="date"/></td>--%>
                  <td><input type="time" class="startTime" name="startTime"/></td>
                  <td><input type="time" class="endTime"name="endTime" /></td>
                  <td><input type="time" class="lunchTimeStart" name="lunchTimeStart"/></td>

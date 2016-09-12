@@ -37,8 +37,8 @@ public class AdminController {
 
     @RequestMapping(value="/")    //Annotation for mapping web requests onto specific handler classes and/or handler methods
     public String allEmployees(ModelMap model) {
-        Iterable<Employee> employeess = employeeDAO.findAll();
-        model.addAttribute("employees",employeess);
+        Iterable<Employee> employees = employeeDAO.findAll();
+        model.addAttribute("employees",employees);
         return "admin/viewAllEmployees";
     }
 
@@ -49,21 +49,23 @@ public class AdminController {
         return "admin/addNewEmployee";
     }
 
-    @RequestMapping(value="saveNewEmployee")
-    public String saveNewEmployee(Employee employee) {
+    @RequestMapping(value=" saveNewEmployee")
+    public View saveNewEmployee(Employee employee) {
         employeeDAO.save(employee);
-        return "/admin/";
+        return new RedirectView("/admin/");
     }
 
-    @RequestMapping(value="viewEmployee")                   //TODO can edit too
-    public String viewEmployee(long id,ModelMap model) {
-        Employee employee = employeeDAO.findOne(id);
-        model.addAttribute("employee",employee);  //(Object attributeValue)
+    @RequestMapping(value="viewEmployee")
+    public String viewEmployee(Long employeeID,ModelMap employeeModel, Long adminID, ModelMap adminModel) {
+        Employee employee = employeeDAO.findOne(employeeID);
+        employeeModel.addAttribute("employee",employee);  //(Object attributeValue)
+//        Admin admin = adminDAO.findOne(adminID);
+//        adminModel.addAttribute("admin",admin);
         return "admin/editEmployee";
     }
 
     @RequestMapping(value="deleteEmployee")
-    public View deleteEmployee(long id) {                       //this method is to delete question
+    public View deleteEmployee(Long id) {                       //this method is to delete question
         Employee employee = employeeDAO.findOne(id);
         employeeDAO.delete(employee);  //going to the dao, deleting that particular question
         return new RedirectView("/admin/");

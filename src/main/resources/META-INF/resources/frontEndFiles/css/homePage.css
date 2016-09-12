@@ -1,42 +1,89 @@
-h1 {border: 2px solid #949599;
+h1 {
+    background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");
+    border: 2px solid #949599;
     height: 35px;
     width: calc(100% - 24px);
     margin: 5px;
     padding: 5px;
-    background-color: lightskyblue;
-    color: mediumvioletred;
+    color: white;
     font-family: "Times New Roman";
     text-decoration: none;
 }
-
 body  {
-    /*TODO this shows an error because we are not giving it a real url path but it works*/
+    /*note this shows an error because we are not giving it a real url path but it works*/
     background-image: url("/frontEndFiles/pictures/BFE_HomePage.jpg");
-
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-}
-
-form {
-    font-family: "Times New Roman";
-    background-color: lightskyblue;
-    border: 2px solid #949599;
-    height: auto;
-    width: 135px;
-    margin: 5px;
-    padding: 5px;
-}
-
-a {
-    position: relative;
-    background-color: lightskyblue;
-    bottom: 5px;
-    left: 5px;
-    margin: 5px;
 }
 
 p {
     font-family: "Times New Roman";
     font-size: 20px;
 }
+
+
+h2 {
+    font-family: cursive;
+    text-align: center;
+    font-size: 60px;
+}
+
+
+ul {
+    background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");
+    position: fixed;
+    bottom: 0px;
+    height: 35px;
+    width: calc(100% - 24px);
+    list-style-type: none;
+    margin: 5px auto;
+    padding: 5px;
+    border: 2px solid #949599;
+    /*border: 1px solid #555;*/
+}
+
+li a {
+    display: block;
+    width: auto;
+    opacity: 0.5;
+    background-color: black;
+    color: white;
+    padding: 8px;
+    display: inline;
+    float: left;
+    font-variant-caps: small-caps;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: grey;
+}
+
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/*form {*/
+/*font-family: "Times New Roman";*/
+/*background-color: lightskyblue;*/
+/*border: 2px solid #949599;*/
+/*height: auto;*/
+/*width: 135px;*/
+/*margin: 5px;*/
+/*padding: 5px;*/
+/*}*/
+
+/*a {*/
+/*!*position: relative;*!*/
+/*top: 5px;*/
+/*right: 5px;*/
+/*margin: 5px;*/
+/*}*/
+
+/*li, a {*/
+    /*padding: 8px;*/
+    /*display: inline;*/
+    /*float: left;*/
+/*}*/

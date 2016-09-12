@@ -10,14 +10,24 @@
 </head>
 <body>
 <h1>BFE Construction</h1>
+<h2>Built For Eternity</h2>
 
-Test to see if this works
-<%--TODO--%>
-<br><br><br><br><br><br><br><br>
+
+<%--<a href="http://www.accuweather.com/en/us/new-york-ny/10007/weather-forecast/349727" class="aw-widget-legal"></a><div--%>
+        <%--id="awcc1473710440238" class="aw-widget-current"  data-locationkey="" data-unit="f" data-language="en-us"--%>
+        <%--data-useip="true" data-uid="awcc1473710440238"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>--%>
+
+<ul>
+    <li>
+        <a href="/home/pastProjects">Past Projects</a>
+        <a href="/home/contactUs">Contact Us</a>
+        <a href="/home/employmentOpportunities">Employment Opportunities</a>
+    <li style="float:right" ><a href="/login">Log In</a></li>
+    <%--<li style="float:right" ><a href="/logout">Log Out</a></li>--%>
+    </li>
+</ul>
+<%--<a href="/login">Login</a>--%>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-<a href="/login">Login</a>
-<br>
-<a href="/home/pastProjects">Past Projects</a> | <a href="/home/contactUs">Contact Us</a>| <a href="/home/employmentOpportunities">Employment Opportunities</a>
-<a href="/home/">homepage</a>
+
 </body>
 </html>
