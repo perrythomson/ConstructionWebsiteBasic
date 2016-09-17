@@ -29,10 +29,7 @@ public class HomeController {
             return "home/contactUs";
      }
 
-     @RequestMapping(value="/employmentOpportunities")
-     public String employmentOpportunities() {
-         return "home/employmentOpportunities";
-     }
+
 
      @RequestMapping(value="/pastProjects")
      public String pastProjects() {

@@ -15,22 +15,19 @@
 looking for qualified laborers, framers, and much more.  Please fill out the form below and we will get back to you shortly.
 </p>
 
-<form name = "employmentSignUpForm" method="POST" action="/admin/jobSeeker">
+<form name = "employmentSignUpForm" method="POST" action="/home/jobSeeker">
 
     Email:      <input type="text" name="email"   value="${email}">    <br/><br/>
     Name:       <input type="text" name="name"    value="${name}">     <br/><br/>
     Phone:      <input type="text" name="phone"   value='${phone}'>    <br/><br/>
-    <%--Job Experience:     <input type="text" name="jobExperience"   value='${jobExperience}'>"   /><br/><br/>--%>
-<%--TODO figure out if text box to be saved in db--%>
-    <form>
-        <div class="form-group">
-            <label for="comment">Job Experience:</label><br><br>
-            <textarea class="form-control" rows="5" id="comment"></textarea>
-        </div>
-    </form>
+
+    <div class="form-group">
+        <label for="comment">Job Experience:</label><br><br>
+        <textarea name="form" class="form-control" rows="5" id="comment"></textarea>
+    </div>
+
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
     <input type="submit" value="Submit your information!">
-
-
 </form>
 
 <ul>

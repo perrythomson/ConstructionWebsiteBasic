@@ -93,11 +93,7 @@ public class AdminController {
         return new RedirectView("/admin/");
     }
 
-    @RequestMapping(value="jobSeeker")
-    public String addNewJobSeeker(ModelMap model) {
-        model.addAttribute("jobSeeker", new JobSeeker());
-        return "admin/jobSeeker";
-    }
+
 
     @RequestMapping("uploadEmployees")
     public String uploadEmployees() {       //passing string on to a jsp to view
