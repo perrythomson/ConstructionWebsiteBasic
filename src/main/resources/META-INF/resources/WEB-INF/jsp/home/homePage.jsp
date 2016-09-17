@@ -12,17 +12,23 @@
 <h1>BFE Construction</h1>
 <h2>Built For Eternity</h2>
 
-
-<%--<a href="http://www.accuweather.com/en/us/new-york-ny/10007/weather-forecast/349727" class="aw-widget-legal"></a><div--%>
-        <%--id="awcc1473710440238" class="aw-widget-current"  data-locationkey="" data-unit="f" data-language="en-us"--%>
-        <%--data-useip="true" data-uid="awcc1473710440238"></div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>--%>
+<p class="weather" >
+    <a href="http://www.accuweather.com/en/us/salt-lake-city-ut/84101/weather-forecast/331216" class="aw-widget-legal">
+    <!--
+    By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at http://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at http://www.accuweather.com/en/privacy.
+    -->
+    </a>
+    <div id="awcc1473794899938" class="aw-widget-current"  data-locationkey="331216"
+             data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1473794899938">
+        </div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
+</p>
 
 <ul>
     <li>
-        <a href="/home/pastProjects">Past Projects</a>
-        <a href="/home/contactUs">Contact Us</a>
-        <a href="/home/employmentOpportunities">Employment Opportunities</a>
-    <li style="float:right" ><a href="/login">Log In</a></li>
+        <a class="two" href="/home/pastProjects">Past Projects</a>
+        <a class="two" href="/home/contactUs">Contact Us</a>
+        <a class="two" href="/home/employmentOpportunities">Employment Opportunities</a>
+    <li style="float:right" ><a class="two" href="/login">Log In</a></li>
     <%--<li style="float:right" ><a href="/logout">Log Out</a></li>--%>
     </li>
 </ul>

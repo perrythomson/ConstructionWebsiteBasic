@@ -2,33 +2,42 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+
     <title>Edit Employee Information</title>
 
+    <link href="/frontEndFiles/css/editEmployee.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-Edit Employee
+<h1>Admin:  Edit Employee</h1>
 
-Edit Owner
 <br><br>
-<form name="updateEmployeeForm" method="POST" action="/admin/updateEmployee">
+<form name="updateEmployeeForm" method="POST" action="/admin/">
     Employee ID: <input type="text" name="employeeID" value="<c:out value="${employee.employeeID}" />" readonly /><br>
+    Role Type: <select name="roleType">
+    <c:forEach var="roleType" items="${roleTypes}">
+        <option value="<c:out value="${roleType}"/>"><c:out value="${roleType}"/></option></c:forEach>
+    </select><br>
     First Name: <input type="text" name="firstname" value="<c:out value="${employee.firstName}" />" /><br>
     Last Name: <input type="text" name="lastname" value="<c:out value="${employee.lastName}" />" /><br>
     Phone: <input type="text" name="phone" value="<c:out value="${employee.phone}" />" /><br>
     Address: <input type="text" name="address" value="<c:out value="${employee.address}" />" /><br>
-    Salary: <input type="text" name="address" value="<c:out value="${employee.salary}" />" /><br>
-    <input type="submit">
+    Salary: <input type="text" name="address" value="<c:out value="${employee.salary}" />" /><br><br><br>
+    User Name:  <input type="text" name="username" autofocus required value="<c:out value="${employee.userName}"/>" /><br>
+    Password:   <input type="password" name="password" required value="<c:out value="${employee.password}"/>" /> <br>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <input type="submit"><br>
 </form>
 
-</body>
 <br><br>
 <ul>
     <li>
-        <a href="/">HOME</a>
+        <a href="/">Home</a>
         <a href="/admin/addNewEmployee"> Add New Employee </a>
-        <%--<a href="/editEmployee"> Edit Employee </a>--%>
-        <a href="/admin/viewAllEmployees"> View All Employees </a>
-        <a href="/admin/viewEmployee"> View Employee </a>
+        <a href="/admin/"> View All Employees </a>
+        <a href="/admin/viewAllPayPeriods"> View All Pay Periods </a>
+            <li style="float:right" ><a href="/logout">Log Out</a></li>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </li>
 </ul>
 

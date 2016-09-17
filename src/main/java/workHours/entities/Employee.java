@@ -39,14 +39,17 @@ public class Employee {
 
     private String password;
 
+    private String userName;
+
     private HashSet<RoleType> roles = new HashSet<RoleType>();
 
     public Employee() {
     }
 
-    public Employee (Long employeeID, String password, String firstName, String lastName, String email, String phone, String address, double salary) {
+    public Employee (Long employeeID, String userName, String password, String firstName, String lastName, String email, String phone, String address, double salary) {
         this.employeeID = employeeID;
         this.password = password;
+        this.userName = userName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -117,5 +120,12 @@ public class Employee {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

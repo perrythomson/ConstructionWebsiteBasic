@@ -15,7 +15,7 @@
 looking for qualified laborers, framers, and much more.  Please fill out the form below and we will get back to you shortly.
 </p>
 
-<form name = "employmentSignUpForm" method="POST" action="/register">
+<form name = "employmentSignUpForm" method="POST" action="/admin/jobSeeker">
 
     Email:      <input type="text" name="email"   value="${email}">    <br/><br/>
     Name:       <input type="text" name="name"    value="${name}">     <br/><br/>
@@ -33,8 +33,16 @@ looking for qualified laborers, framers, and much more.  Please fill out the for
 
 </form>
 
-<br><br><br><br><br><br><br><br>
+<ul>
+    <li>
+        <a href="/">Home Page</a>
+        <a href="/home/contactUs">Contact Us</a>
+        <a href="/home/pastProjects">Past Projects</a>
+    <%--<li style="float:right" ><a class="two" href="/login">Log In</a></li>--%>
+    <%--<li style="float:right" ><a href="/logout">Log Out</a></li>--%>
+    </li>
+</ul>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-<a href="/login">login</a> | <a href="/home/pastProjects">Past Projects</a> | <a href="/home/contactUs">Contact Us</a>| <a href="/">Home</a>
+
 </body>
 </html>

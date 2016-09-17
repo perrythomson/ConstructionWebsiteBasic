@@ -7,9 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.View;
-import workHours.entities.EmployeeDAO;
-import workHours.entities.TimeSheetTracker;
-import workHours.entities.TimeSheetTrackerDAO;
+import workHours.entities.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -39,14 +37,26 @@ public class EmployeeController {
         return timeEntry(model);
     }
 
-    @RequestMapping(value="timeEntry")
+    @RequestMapping(value="employeeHomePage")
     public String timeEntry(ModelMap model) {
-        return "employee/employeeTimeEntry";
+        return "employee/employeeHomePage";
         }
 
+//    @RequestMapping(value="editEmployeeContactInfo")
+//    public String editEmployeeContactInformation(ModelMap model) {
+//        return editEmployeeContactInformation(model);
+//    }
+
     @RequestMapping(value="editEmployeeContactInfo")
-    public String editEmployeeContactInformation(ModelMap model) {
-        return editEmployeeContactInformation(model);
+    public String editEmployee(String employeeID,ModelMap model) {
+        System.out.println("Employee ID is: " + employeeID);
+        Employee employee = employeeDAO.findOne(Long.valueOf(employeeID));  //changes string empID to long
+        model.addAttribute("employee",employee);
+        model.addAttribute("roleTypes", RoleType.values());
+//        Admin admin = adminDAO.findOne(employeeID);
+//        adminModel.addAttribute("admin",admin);
+//        return "/admin/editEmployee";   //TODO find out why I cannot retrieve username password upon addition of new employee
+        return "/employee/editEmployeeContactInfo";
     }
 
     @RequestMapping(value="employeeContactInfo")

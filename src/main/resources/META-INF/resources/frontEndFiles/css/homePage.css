@@ -17,6 +17,14 @@ body  {
     background-size: 100% 100%;
 }
 
+p.weather {
+    position: fixed;
+    top: 100px;
+    right: 12px;
+    width: 30px;
+    /*border: 3px solid #73AD21;*/
+}
+
 p {
     font-family: "Times New Roman";
     font-size: 20px;
@@ -27,6 +35,7 @@ h2 {
     font-family: cursive;
     text-align: center;
     font-size: 60px;
+    top: 55px;
 }
 
 
@@ -43,7 +52,7 @@ ul {
     /*border: 1px solid #555;*/
 }
 
-li a {
+li a.two {
     display: block;
     width: auto;
     opacity: 0.5;

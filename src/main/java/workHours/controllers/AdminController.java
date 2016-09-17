@@ -2,7 +2,6 @@ package workHours.controllers;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.Assert;
@@ -23,12 +22,14 @@ import java.util.List;
 public class AdminController {
 
     private final EmployeeDAO employeeDAO;  //DAO is an object that provides an abstract interface to some type of database or other persistence mechanism. By mapping application calls to the persistence layer,
-                                            // DAO provide some specific data operations without exposing details of the database
+    private final AdminDAO adminDAO;                                     // DAO provide some specific data operations without exposing details of the database
     private final TimeSheetTrackerDAO timeSheetTrackerDAO;
 
-    @Autowired
+//    @Autowired  //could be destroying my constructor only used to bring in beans
     //marks a constructor, field, setter method or config  to be autowired by springs dependency injection
-    public AdminController(EmployeeDAO employeeDAO, TimeSheetTrackerDAO timeSheetTrackerDAO) {
+    public AdminController(EmployeeDAO employeeDAO, AdminDAO adminDAO, TimeSheetTrackerDAO timeSheetTrackerDAO) {
+        Assert.notNull(adminDAO, "AdminDAO must not be null!");
+        this.adminDAO = adminDAO;
         Assert.notNull(employeeDAO, "EmployeeDAO must not be null!");  //Assert extends object validates method arguments
         this.employeeDAO = employeeDAO;
         Assert.notNull(timeSheetTrackerDAO, "TimeSheetTrackerDAO must not be null!");  //Assert extends object validates method arguments...it will not be if you do not meet my criteria
@@ -39,7 +40,8 @@ public class AdminController {
     public String allEmployees(ModelMap model) {
         Iterable<Employee> employees = employeeDAO.findAll();
         model.addAttribute("employees",employees);
-        return "admin/viewAllEmployees";
+        model.addAttribute("roleTypes", RoleType.values());
+        return "admin/adminHomePage";
     }
 
     @RequestMapping(value="addNewEmployee")
@@ -49,19 +51,33 @@ public class AdminController {
         return "admin/addNewEmployee";
     }
 
-    @RequestMapping(value=" saveNewEmployee")
+    @RequestMapping(value="saveNewEmployee")
     public View saveNewEmployee(Employee employee) {
         employeeDAO.save(employee);
         return new RedirectView("/admin/");
     }
 
-    @RequestMapping(value="viewEmployee")
-    public String viewEmployee(Long employeeID,ModelMap employeeModel, Long adminID, ModelMap adminModel) {
-        Employee employee = employeeDAO.findOne(employeeID);
-        employeeModel.addAttribute("employee",employee);  //(Object attributeValue)
-//        Admin admin = adminDAO.findOne(adminID);
+//    //this routes from EDIT employee
+//    @RequestMapping(value="viewEmployee")
+//    public View viewEmployee(Long employeeID,ModelMap model, Long adminID, ModelMap adminModel) {
+//        Employee employee = employeeDAO.findOne(employeeID);
+//        model.addAttribute("employee",employee);
+////        Admin admin = adminDAO.findOne(employeeID);
+////        adminModel.addAttribute("admin",admin);
+////        return "/admin/editEmployee";
+//        return new RedirectView("/admin/editEmployee");
+//    }
+
+    @RequestMapping(value="editEmployee")
+    public String editEmployee(String employeeID,ModelMap model) {
+        System.out.println("Employee ID is: " + employeeID);
+        Employee employee = employeeDAO.findOne(Long.valueOf(employeeID));  //changes string empID to long
+        model.addAttribute("employee",employee);
+        model.addAttribute("roleTypes", RoleType.values());
+//        Admin admin = adminDAO.findOne(employeeID);
 //        adminModel.addAttribute("admin",admin);
-        return "admin/editEmployee";
+//        return "/admin/editEmployee";   //TODO find out why I cannot retrieve username password upon addition of new employee
+        return "/admin/editEmployee";
     }
 
     @RequestMapping(value="deleteEmployee")
@@ -75,6 +91,12 @@ public class AdminController {
     public View saveEditedEmployee(Employee employee) {
         employeeDAO.save(employee);
         return new RedirectView("/admin/");
+    }
+
+    @RequestMapping(value="jobSeeker")
+    public String addNewJobSeeker(ModelMap model) {
+        model.addAttribute("jobSeeker", new JobSeeker());
+        return "admin/jobSeeker";
     }
 
     @RequestMapping("uploadEmployees")
