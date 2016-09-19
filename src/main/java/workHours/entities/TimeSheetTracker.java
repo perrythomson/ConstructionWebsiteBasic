@@ -21,36 +21,29 @@ public class TimeSheetTracker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO) //auto populates timeSheetID
-    private long timeSheetID;
-
-//    @NotNull
-//    private java.sql.Date loginDate; //TODO do I really need this?
+    private Long timeSheetID;
 
     @NotNull
-    private String startTime;
+    private double startTime;
 
     @NotNull
-    private String endTime;
+    private double endTime;  //not null because we need absolute time to start and end ...lunch is optional
 
-    private String lunchStart;
+    private double lunchStart;
 
-    private String lunchEnd;
+    private double lunchEnd;
 
     @NotNull
     private String task;
 
-    private String totalDayHours;
+    private double totalDayHours;
 
-    private String totalWeeklyHours;
+    private double totalWeeklyHours;
 
 
     public TimeSheetTracker() { }
 
-    public TimeSheetTracker(long timeSheetID) {
-        this.timeSheetID = timeSheetID;
-    }
-
-    public TimeSheetTracker(String startTime, String endTime, String lunchStart, String lunchEnd, String task, String totalDayHours, String totalWeeklyHours) {
+    public TimeSheetTracker(Long timeSheetID, double startTime, double endTime, double lunchStart, double lunchEnd, String task, double totalDayHours, double totalWeeklyHours) {
         this.startTime = startTime;
         this.endTime = endTime;
         this.lunchStart = lunchStart;
@@ -58,6 +51,7 @@ public class TimeSheetTracker {
         this.task = task;
         this.totalDayHours = totalDayHours;
         this.totalWeeklyHours = totalWeeklyHours;
+        this.timeSheetID = timeSheetID;
     }
 
 //    public Date getLoginDate() {
@@ -68,67 +62,59 @@ public class TimeSheetTracker {
 //        this.loginDate = loginDate;
 //    }
 
-    public String getStartTime() {
+    public double getStartTime() {
         return startTime;
     }
-
-    public void setStartTime(String startTime) {
+    public void setStartTime(double startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public double getEndTime() {
         return endTime;
     }
-
-    public void setEndTime(String endTime) {
+    public void setEndTime(double endTime) {
         this.endTime = endTime;
     }
 
-    public String getLunchStart() {
+    public double getLunchStart() {
         return lunchStart;
     }
-
-    public void setLunchStart(String lunchStart) {
+    public void setLunchStart(double lunchStart) {
         this.lunchStart = lunchStart;
     }
 
-    public String getLunchEnd() {
+    public double getLunchEnd() {
         return lunchEnd;
     }
-
-    public void setLunchEnd(String lunchEnd) {
+    public void setLunchEnd(double lunchEnd) {
         this.lunchEnd = lunchEnd;
     }
 
     public String getTask() {
         return task;
     }
-
     public void setTask(String task) {
         this.task = task;
     }
 
-    public String getTotalDayHours() {
+    public double getTotalDayHours() {
         return totalDayHours;
     }
-
-    public void setTotalDayHours(String totalDayHours) {
+    public void setTotalDayHours(double totalDayHours) {
         this.totalDayHours = totalDayHours;
     }
 
-    public String getTotalWeeklyHours() {
+    public double getTotalWeeklyHours() {
         return totalWeeklyHours;
     }
-
-    public void setTotalWeeklyHours(String totalWeeklyHours) {
+    public void setTotalWeeklyHours(Long totalWeeklyHours) {
         this.totalWeeklyHours = totalWeeklyHours;
     }
 
-    public long getTimeSheetID() {
+    public Long getTimeSheetID() {
         return timeSheetID;
     }
-
-    public void setTimeSheetID(long timeSheetID) {
+    public void setTimeSheetID(Long timeSheetID) {
         this.timeSheetID = timeSheetID;
     }
 }

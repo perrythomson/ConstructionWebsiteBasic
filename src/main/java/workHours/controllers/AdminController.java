@@ -21,19 +21,22 @@ import java.util.List;
 @RequestMapping(value="/admin/")
 public class AdminController {
 
+    private final JobSeekerDAO jobSeekerDAO;
     private final EmployeeDAO employeeDAO;  //DAO is an object that provides an abstract interface to some type of database or other persistence mechanism. By mapping application calls to the persistence layer,
     private final AdminDAO adminDAO;                                     // DAO provide some specific data operations without exposing details of the database
     private final TimeSheetTrackerDAO timeSheetTrackerDAO;
 
 //    @Autowired  //could be destroying my constructor only used to bring in beans
     //marks a constructor, field, setter method or config  to be autowired by springs dependency injection
-    public AdminController(EmployeeDAO employeeDAO, AdminDAO adminDAO, TimeSheetTrackerDAO timeSheetTrackerDAO) {
+    public AdminController(EmployeeDAO employeeDAO, AdminDAO adminDAO, JobSeekerDAO jobSeekerDAO, TimeSheetTrackerDAO timeSheetTrackerDAO) {
         Assert.notNull(adminDAO, "AdminDAO must not be null!");
         this.adminDAO = adminDAO;
         Assert.notNull(employeeDAO, "EmployeeDAO must not be null!");  //Assert extends object validates method arguments
         this.employeeDAO = employeeDAO;
         Assert.notNull(timeSheetTrackerDAO, "TimeSheetTrackerDAO must not be null!");  //Assert extends object validates method arguments...it will not be if you do not meet my criteria
         this.timeSheetTrackerDAO = timeSheetTrackerDAO;
+        Assert.notNull(jobSeekerDAO, "JobSeekerDAO must not be null!");
+        this.jobSeekerDAO = jobSeekerDAO;
     }
 
     @RequestMapping(value="/")    //Annotation for mapping web requests onto specific handler classes and/or handler methods
@@ -41,6 +44,9 @@ public class AdminController {
         Iterable<Employee> employees = employeeDAO.findAll();
         model.addAttribute("employees",employees);
         model.addAttribute("roleTypes", RoleType.values());
+
+        Iterable<JobSeeker> jobSeekers = jobSeekerDAO.findAll();  //pulling information to the same home page need logic for all db objects
+        model.addAttribute("jobSeekers", jobSeekers);
         return "admin/adminHomePage";
     }
 
@@ -70,7 +76,7 @@ public class AdminController {
 
     @RequestMapping(value="editEmployee")
     public String editEmployee(String employeeID,ModelMap model) {
-        System.out.println("Employee ID is: " + employeeID);
+//        System.out.println("Employee ID is: " + employeeID); //used for debugging
         Employee employee = employeeDAO.findOne(Long.valueOf(employeeID));  //changes string empID to long
         model.addAttribute("employee",employee);
         model.addAttribute("roleTypes", RoleType.values());

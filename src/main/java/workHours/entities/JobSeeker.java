@@ -5,8 +5,10 @@ import javax.validation.constraints.NotNull;
 
 /**
  * Created by perrythomson on 9/16/16.
- */@Entity
-@Table(name = "admin")
+ */
+
+@Entity
+@Table(name = "jobSeeker")
 public class JobSeeker {
 
     @Id

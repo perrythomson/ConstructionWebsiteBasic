@@ -9,8 +9,8 @@
 
 </head>
 <body>
-<h1>BFE Construction</h1>
-<h2>Built For Eternity</h2>
+<div><h1>BFE Construction</h1></div>
+<div><h2>Built For Eternity</h2></div>
 
 <p class="weather" >
     <a href="http://www.accuweather.com/en/us/salt-lake-city-ut/84101/weather-forecast/331216" class="aw-widget-legal">
@@ -23,15 +23,17 @@
         </div><script type="text/javascript" src="http://oap.accuweather.com/launch.js"></script>
 </p>
 
-<ul>
-    <li>
-        <a class="two" href="/home/pastProjects">Past Projects</a>
-        <a class="two" href="/home/contactUs">Contact Us</a>
-        <a class="two" href="/home/employmentOpportunities">Employment Opportunities</a>
-    <li style="float:right" ><a class="two" href="/login">Log In</a></li>
-    <%--<li style="float:right" ><a href="/logout">Log Out</a></li>--%>
-    </li>
-</ul>
+<div>
+    <ul>
+        <li>
+            <a class="two" href="/home/pastProjects">Past Projects</a>
+            <a class="two" href="/home/contactUs">Contact Us</a>
+            <a class="two" href="/home/employmentOpportunities">Employment Opportunities</a>
+        <li style="float:right" ><a class="two" href="/login">Log In</a></li>
+        <%--<li style="float:right" ><a href="/logout">Log Out</a></li>--%>
+        </li>
+    </ul>
+</div>
 <%--<a href="/login">Login</a>--%>
 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 

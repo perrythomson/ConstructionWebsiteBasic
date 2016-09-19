@@ -8,8 +8,6 @@ import javax.transaction.Transactional;
 
 @Transactional
 public interface TimeSheetTrackerDAO extends CrudRepository<TimeSheetTracker, Long> {
-//    TimeSheetTracker findsByEmail(String email);
     Iterable<TimeSheetTracker> findAll();
-
 }
 

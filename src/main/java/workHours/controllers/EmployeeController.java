@@ -31,10 +31,15 @@ public class EmployeeController {
         this.timeSheetTrackerDAO = timeSheetTrackerDAO;
     }
 
-//    TODO understand mapping and code to get info from db for signin person
     @RequestMapping(value="/")
-    public String defaultPage(ModelMap model) {
-        return timeEntry(model);
+    public String employeeHomePage(String employeeID, ModelMap model) {
+        Employee employee = employeeDAO.findOne(Long.valueOf(employeeID));  //this is going to have username/password info rather than find by empID
+        model.addAttribute("employee",employee);
+        model.addAttribute("roleTypes", RoleType.values());
+
+        Iterable<TimeSheetTracker> timeSheetTrackers = timeSheetTrackerDAO.findAll();
+        model.addAttribute("timeSheetTrackers", timeSheetTrackers);
+        return "employee/employeeHomePage";
     }
 
     @RequestMapping(value="employeeHomePage")
@@ -42,10 +47,7 @@ public class EmployeeController {
         return "employee/employeeHomePage";
         }
 
-//    @RequestMapping(value="editEmployeeContactInfo")
-//    public String editEmployeeContactInformation(ModelMap model) {
-//        return editEmployeeContactInformation(model);
-//    }
+
 
     @RequestMapping(value="editEmployeeContactInfo")
     public String editEmployee(String employeeID,ModelMap model) {
@@ -55,7 +57,7 @@ public class EmployeeController {
         model.addAttribute("roleTypes", RoleType.values());
 //        Admin admin = adminDAO.findOne(employeeID);
 //        adminModel.addAttribute("admin",admin);
-//        return "/admin/editEmployee";   //TODO find out why I cannot retrieve username password upon addition of new employee
+//        return "/admin/editEmployee";
         return "/employee/editEmployeeContactInfo";
     }
 
