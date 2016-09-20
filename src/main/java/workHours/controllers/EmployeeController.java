@@ -30,16 +30,29 @@ public class EmployeeController {
         this.employeeDAO = employeeDAO;
         this.timeSheetTrackerDAO = timeSheetTrackerDAO;
     }
-
     @RequestMapping(value="/")
-    public String employeeHomePage(String employeeID, ModelMap model) {
-        Employee employee = employeeDAO.findOne(Long.valueOf(employeeID));  //this is going to have username/password info rather than find by empID
-        model.addAttribute("employee",employee);
+    public String defaultPage(ModelMap model) {
+        return "employee/employeeHomePage";
+    }
+    //TODO This method prevents employeeHomePage from working error 500
+//    @RequestMapping(value="/")
+//    public String employeeHomePage(String employeeID, ModelMap model) {
+//        Employee employee = employeeDAO.findOne(Long.valueOf(employeeID));  //this is going to have username/password info rather than find by empID
+//        model.addAttribute("employee",employee);
+//        model.addAttribute("roleTypes", RoleType.values());
+//
+//        Iterable<TimeSheetTracker> timeSheetTrackers = timeSheetTrackerDAO.findAll();
+//        model.addAttribute("timeSheetTrackers", timeSheetTrackers);
+//        return "employee/employeeHomePage";
+//    }
+
+    @RequestMapping(value="viewAllCoworkers")
+    public String allEmployees(ModelMap model) {
+        Iterable<Employee> employees = employeeDAO.findAll();
+        model.addAttribute("employees", employees);
         model.addAttribute("roleTypes", RoleType.values());
 
-        Iterable<TimeSheetTracker> timeSheetTrackers = timeSheetTrackerDAO.findAll();
-        model.addAttribute("timeSheetTrackers", timeSheetTrackers);
-        return "employee/employeeHomePage";
+        return "employee/viewAllCoworkers";
     }
 
     @RequestMapping(value="employeeHomePage")

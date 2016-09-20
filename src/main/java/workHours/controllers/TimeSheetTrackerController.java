@@ -22,11 +22,11 @@ public class TimeSheetTrackerController {
         this.timeSheetTrackerDAO = timeSheetTrackerDAO;
     }
 
-    @RequestMapping(value="/employee/employeeHomePage")
-    public String hoursWorked(ModelMap model) {
-        model.addAttribute("timeSheetTracker", new TimeSheetTracker());
-        return "employeeHomePage";
-    }
+//    @RequestMapping(value="/employee/employeeHomePage")
+//    public String hoursWorked(ModelMap model) {
+//        model.addAttribute("timeSheetTracker", new TimeSheetTracker());
+//        return "employeeHomePage";
+//    }
 
     @RequestMapping(value="/employee/employeeTimeSheet")
     public String saveNewTimeSheet(TimeSheetTracker timeSheetTracker){
