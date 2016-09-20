@@ -10,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -25,8 +27,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login").defaultSuccessUrl("/default") //this routes to the defaultController to assess roleType
                 .permitAll()
                 .and()
-                .logout()
-                .permitAll();
+                .logout().permitAll();
 //        http.csrf().disable();
     }
 
@@ -35,4 +36,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication().withUser("bob").password("pass").roles("ADMIN");
         auth.inMemoryAuthentication().withUser("sally").password("pass").roles("EMPLOYEE");
     }
+
+
 }
