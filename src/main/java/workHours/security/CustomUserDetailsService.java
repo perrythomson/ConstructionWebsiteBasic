@@ -1,26 +1,25 @@
-package workHours.entities;
+package workHours.security;
 
-
-import core.entities.User;
-import core.entities.UserDAO;
-import core.entities.UserRolesDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import workHours.entities.User;
+import workHours.entities.UserDAO;
+import workHours.entities.UserRoleDAO;
 
 import java.util.List;
 
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserDAO userDAO;
-    private final UserRolesDAO userRolesDAO;
+    private final UserRoleDAO userRoleDAO;
 
     @Autowired
-    public CustomUserDetailsService(UserDAO userDAO, UserRolesDAO userRolesDAO) {
+    public CustomUserDetailsService(UserDAO userDAO, UserRoleDAO userRoleDAO) {
         this.userDAO = userDAO;
-        this.userRolesDAO = userRolesDAO;
+        this.userRoleDAO = userRoleDAO;
     }
 
 
@@ -30,8 +29,9 @@ public class CustomUserDetailsService implements UserDetailsService {
         if(null == user){
             throw new UsernameNotFoundException("No user present with username: "+username);
         }else{
-            List<String> userRoles= userRolesDAO.findRoleByUserName(username);
+            List<String> userRoles= userRoleDAO.findRoleByUserName(username);
             return new CustomUserDetails(user,userRoles);
         }
     }
+
 }

@@ -206,7 +206,7 @@
 
     <c:forEach items="${employees}" var="employee">
         <tr>
-            <%--<td><a href="/admin/viewEmployee?employeeID=${employee.employeeID}"><c:out value="${employee.employeeID}" /></a></td>--%>
+            <%--<td><a href="/admin/viewEmployee?employeeID=${user.employeeID}"><c:out value="${user.employeeID}" /></a></td>--%>
             <td align="center"><c:out value="${employee.employeeID}" /></td>
             <td align="center"><a href="/admin/editEmployee?employeeID=${employee.employeeID}">EDIT</a></td>
             <td><c:out value="${roleType.roleType}" /></td>
@@ -245,7 +245,7 @@
 
     <c:forEach items="${jobSeekers}" var="jobSeeker">
         <tr>
-                <%--<td><a href="/admin/viewEmployee?employeeID=${employee.employeeID}"><c:out value="${employee.employeeID}" /></a></td>--%>
+                <%--<td><a href="/admin/viewEmployee?employeeID=${user.employeeID}"><c:out value="${user.employeeID}" /></a></td>--%>
             <td align="center"><c:out value="${jobSeeker.jobSeekerID}" /></td>
             <th>  </th>
             <td><c:out value="${jobSeeker.name}" /></td>

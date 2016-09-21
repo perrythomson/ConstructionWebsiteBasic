@@ -1,11 +1,8 @@
 package workHours.entities;
 
-
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 @Entity
 @Table(name = "users")
@@ -15,7 +12,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="userid")
+    @Column(name = "userid")
     private Long userId;
 
     @Column(name = "username")
@@ -27,76 +24,33 @@ public class User implements Serializable {
 
     private String email;
 
-    private boolean emailVerified;
+    private String firstName;
 
-    private String first;
+    private String lastName;
 
-    private String last;
+    private String phone;
 
-    @NotNull
-    @Column(nullable = false)
-    private long accountId;
+    private String address;
 
-    @NotNull
-    @Column(nullable = false)
-    private Timestamp created;
+    private double salary;
 
-    private Timestamp deactivated;
-
-    public User(){
+    public User() {
 
     }
 
     public User(User user) {
         this.userId = user.userId;
-        this.userName = user.userName;
-        this.email = user.email;
-        this.password = user.password;
-        this.enabled=user.enabled;
-        this.emailVerified = user.emailVerified;
-        this.accountId = user.accountId;
-        this.created = user.created;
-        this.deactivated = user.deactivated;
+        this.userName = user.getUserName();
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.enabled = user.getEnabled();
     }
 
-    public int getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(int enabled) {
-        this.enabled = enabled;
-    }
-
-    public Long getUserid() {
-        return userId;
-    }
-
-    public void setUserid(Long userid) {
-        this.userId = userid;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
+    public User(String userName, String password, int enabled, String email) {
         this.userName = userName;
+        this.password = password;
+        this.enabled = enabled;
+        this.email = email;
     }
 
     public static long getSerialVersionUID() {
@@ -111,52 +65,75 @@ public class User implements Serializable {
         this.userId = userId;
     }
 
-    public boolean isEmailVerified() {
-        return emailVerified;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setEmailVerified(boolean emailVerified) {
-        this.emailVerified = emailVerified;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getFirst() {
-        return first;
+    public String getPassword() {
+        return password;
     }
 
-    public void setFirst(String first) {
-        this.first = first;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getLast() {
-        return last;
+    public int getEnabled() {
+        return enabled;
     }
 
-    public void setLast(String last) {
-        this.last = last;
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
     }
 
-    public long getAccountId() {
-        return accountId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAccountId(long accountId) {
-        this.accountId = accountId;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Timestamp getCreated() {
-        return created;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setCreated(Timestamp created) {
-        this.created = created;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public Timestamp getDeactivated() {
-        return deactivated;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setDeactivated(Timestamp deactivated) {
-        this.deactivated = deactivated;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
     }
 }
-

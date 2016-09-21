@@ -32,18 +32,18 @@ public class EmployeeController {
     }
     @RequestMapping(value="/")
     public String defaultPage(ModelMap model) {
-        return "employee/employeeHomePage";
+        return "user/employeeHomePage";
     }
     //TODO This method prevents employeeHomePage from working error 500
 //    @RequestMapping(value="/")
 //    public String employeeHomePage(String employeeID, ModelMap model) {
-//        Employee employee = employeeDAO.findOne(Long.valueOf(employeeID));  //this is going to have username/password info rather than find by empID
-//        model.addAttribute("employee",employee);
+//        Employee user = employeeDAO.findOne(Long.valueOf(employeeID));  //this is going to have username/password info rather than find by empID
+//        model.addAttribute("user",user);
 //        model.addAttribute("roleTypes", RoleType.values());
 //
 //        Iterable<TimeSheetTracker> timeSheetTrackers = timeSheetTrackerDAO.findAll();
 //        model.addAttribute("timeSheetTrackers", timeSheetTrackers);
-//        return "employee/employeeHomePage";
+//        return "user/employeeHomePage";
 //    }
 
     @RequestMapping(value="viewAllCoworkers")
@@ -52,12 +52,12 @@ public class EmployeeController {
         model.addAttribute("employees", employees);
         model.addAttribute("roleTypes", RoleType.values());
 
-        return "employee/viewAllCoworkers";
+        return "user/viewAllCoworkers";
     }
 
     @RequestMapping(value="employeeHomePage")
     public String timeEntry(ModelMap model) {
-        return "employee/employeeHomePage";
+        return "user/employeeHomePage";
         }
 
 
@@ -66,12 +66,12 @@ public class EmployeeController {
     public String editEmployee(String employeeID,ModelMap model) {
         System.out.println("Employee ID is: " + employeeID);
         Employee employee = employeeDAO.findOne(Long.valueOf(employeeID));  //changes string empID to long
-        model.addAttribute("employee",employee);
+        model.addAttribute("user",employee);
         model.addAttribute("roleTypes", RoleType.values());
 //        Admin admin = adminDAO.findOne(employeeID);
 //        adminModel.addAttribute("admin",admin);
 //        return "/admin/editEmployee";
-        return "/employee/editEmployeeContactInfo";
+        return "/user/editEmployeeContactInfo";
     }
 
     @RequestMapping(value="employeeContactInfo")
@@ -81,6 +81,6 @@ public class EmployeeController {
 
     @RequestMapping(value = "updateEmployee")
     public String updateEmployee(ModelMap model) {
-        return "/employee/";
+        return "/user/";
     }
 }

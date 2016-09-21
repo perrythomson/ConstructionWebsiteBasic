@@ -1,10 +1,11 @@
-package workHours.entities;
+package workHours.security;
 
-import core.entities.User;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.util.StringUtils;
+import workHours.entities.User;
 
 import java.util.Collection;
 import java.util.List;
@@ -55,3 +56,4 @@ public class CustomUserDetails extends User implements UserDetails {
 
 
 }
+
