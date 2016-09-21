@@ -16,23 +16,23 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @Controller
-@RequestMapping(value="/employee/")
-public class EmployeeController {
+@RequestMapping(value="/user/")
+public class UserController {
 
-    private final EmployeeDAO employeeDAO;
+    private final UserDAO userDAO;
     private final TimeSheetTrackerDAO timeSheetTrackerDAO;
 
     @Autowired
-    public EmployeeController(EmployeeDAO employeeDAO, TimeSheetTrackerDAO timeSheetTrackerDAO) {
-        Assert.notNull(employeeDAO, "EmployeeDAO must not be null!");
+    public UserController(UserDAO userDAO, TimeSheetTrackerDAO timeSheetTrackerDAO) {
+        Assert.notNull(userDAO, "UserDAO must not be null!");
         Assert.notNull(timeSheetTrackerDAO, "TimeSheetTrackerDAO must not be null!");
 
-        this.employeeDAO = employeeDAO;
+        this.userDAO = userDAO;
         this.timeSheetTrackerDAO = timeSheetTrackerDAO;
     }
     @RequestMapping(value="/")
     public String defaultPage(ModelMap model) {
-        return "user/employeeHomePage";
+        return "user/userHomePage";
     }
     //TODO This method prevents employeeHomePage from working error 500
 //    @RequestMapping(value="/")
@@ -47,39 +47,39 @@ public class EmployeeController {
 //    }
 
     @RequestMapping(value="viewAllCoworkers")
-    public String allEmployees(ModelMap model) {
-        Iterable<Employee> employees = employeeDAO.findAll();
-        model.addAttribute("employees", employees);
+    public String allUsers(ModelMap model) {
+        Iterable<User> users = userDAO.findAll();
+        model.addAttribute("users", users);
         model.addAttribute("roleTypes", RoleType.values());
 
         return "user/viewAllCoworkers";
     }
 
-    @RequestMapping(value="employeeHomePage")
+    @RequestMapping(value="userHomePage")
     public String timeEntry(ModelMap model) {
-        return "user/employeeHomePage";
+        return "user/userHomePage";
         }
 
 
 
-    @RequestMapping(value="editEmployeeContactInfo")
-    public String editEmployee(String employeeID,ModelMap model) {
-        System.out.println("Employee ID is: " + employeeID);
-        Employee employee = employeeDAO.findOne(Long.valueOf(employeeID));  //changes string empID to long
-        model.addAttribute("user",employee);
+    @RequestMapping(value="editUserContactInfo")
+    public String editUser(String userid,ModelMap model) {
+        System.out.println("User ID is: " + userid);
+        User user = userDAO.findOne(Long.valueOf(userid));  //changes string empID to long
+        model.addAttribute("user",user);
         model.addAttribute("roleTypes", RoleType.values());
 //        Admin admin = adminDAO.findOne(employeeID);
 //        adminModel.addAttribute("admin",admin);
 //        return "/admin/editEmployee";
-        return "/user/editEmployeeContactInfo";
+        return "/user/editUserContactInfo";
     }
 
-    @RequestMapping(value="employeeContactInfo")
+    @RequestMapping(value="userContactInfo")
     public String viewContactInfo(ModelMap model) {
         return viewContactInfo(model);
     }
 
-    @RequestMapping(value = "updateEmployee")
+    @RequestMapping(value = "updateUser")
     public String updateEmployee(ModelMap model) {
         return "/user/";
     }

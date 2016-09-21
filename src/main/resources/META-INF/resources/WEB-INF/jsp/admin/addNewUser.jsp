@@ -16,7 +16,6 @@
 <h1>ADMIN:  Add Employee</h1>
 
 <form name="newEmployeeForm" method="POST" action="/admin/saveNewUser"> <!-- post information is readable get information is hidden !-->
-<%--<form name="newEmployeeForm" method="POST" action="/admin/saveNewEmployee"> <!-- post information is readable get information is hidden !-->--%>
         Role Type: <select name="roleType">
             <c:forEach var="roleType" items="${roleTypes}">
             <option value="<c:out value="${roleType}"/>"><c:out value="${roleType}"/></option></c:forEach>
@@ -50,20 +49,3 @@
 
 
 
-<%--<form:form id="userForm" commandName="user" modelAttribute="user" method="POST" action="/admin/saveNewEmployee" >&ndash;%&gt;--%>
-    <%--<form:label path="name" >First Name: </form:label><br>--%>
-    <%--<form:label path="name" >Last Name: </form:label><br>--%>
-
-    <%--<form:label path="address" >Address: </form:label><br>--%>
-    <%--<form:label path="city" >City: </form:label><br>--%>
-
-    <%--<form:label path="zip" >Zip: </form:label><br>--%>
-    <%--<form:label path="states">State:</form:label>--%>
-    <%--&lt;%&ndash;<form:select path="states" id="states"><form:options items="${STATES}" />&ndash;%&gt;--%>
-    <%--&lt;%&ndash;</form:select>&ndash;%&gt;--%>
-    <%--<form:label path="email" >Email: </form:label><br>--%>
-    <%--<form:label path="phone" >Phone: </form:label><br>--%>
-
-    <%--<form:label path="userName" >UserName: </form:label><br>--%>
-    <%--<form:label path="password" >Password: </form:label>br>--%>
-    <%--<form:label path="matchingPassword" >Confirm Password: </form:label>br>

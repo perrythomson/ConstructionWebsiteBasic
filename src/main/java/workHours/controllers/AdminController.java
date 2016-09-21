@@ -37,7 +37,6 @@ public class AdminController {
     private final PasswordEncoder passwordEncoder;
 
 
-
     public AdminController( AdminDAO adminDAO, JobSeekerDAO jobSeekerDAO, TimeSheetTrackerDAO timeSheetTrackerDAO, UserDAO userDAO, UserRoleDAO userRoleDAO, PasswordEncoder passwordEncoder) {
         this.userDAO = userDAO;
         this.userRoleDAO = userRoleDAO;
@@ -73,33 +72,9 @@ public class AdminController {
         return "secure/securePage";
     }
 
-//    @RequestMapping(value="addNewEmployee")
-//    public String addNewEmployee(ModelMap model) {
-//        model.addAttribute("user", new Employee());
-//        model.addAttribute("roleTypes", RoleType.values());
-//        return "admin/addNewEmployee";
-//    }
-
-//    @RequestMapping(value="saveNewEmployee")
-//    public View saveNewEmployee(Employee user) {
-//        employeeDAO.save(user);
-//        return new RedirectView("/admin/");
-//    }
-
-//    @RequestMapping(value="editEmployee")
-//    public String editEmployee(String employeeID,ModelMap model) {
-////        System.out.println("Employee ID is: " + employeeID); //used for debugging
-//        Employee user = employeeDAO.findOne(Long.valueOf(employeeID));  //changes string empID to long
-//        model.addAttribute("user",user);
-//        model.addAttribute("roleTypes", RoleType.values());
-////        Admin admin = adminDAO.findOne(employeeID);
-////        adminModel.addAttribute("admin",admin);
-////        return "/admin/editEmployee";
-//        return "/admin/editEmployee";
-//    }
 
     @RequestMapping(value="/saveNewUser")
-    public String saveUser(String username, String password, String email) {
+    public String saveUser(Long userId, String username, String password, String email, String firstName, String lastName, String phone, String Address, double Salary ) {
         User user = new User(username,passwordEncoder.encode(password),1,email);
         userDAO.save(user);
         UserRole userRole = new UserRole();
@@ -112,14 +87,11 @@ public class AdminController {
 
 
     @RequestMapping(value="editUser")
-    public String editUser(String userID,ModelMap model) {
+    public String editUser(Long userId,ModelMap model) {
 //        System.out.println("Employee ID is: " + employeeID); //used for debugging
-        User user = userDAO.findOne(Long.valueOf(userID));  //changes string empID to long
+        User user = userDAO.findOne(Long.valueOf(userId));  //changes string empID to long
         model.addAttribute("user",user);
         model.addAttribute("roleTypes", RoleType.values());
-//        Admin admin = adminDAO.findOne(employeeID);
-//        adminModel.addAttribute("admin",admin);
-//        return "/admin/editEmployee";   //TODO find out why I cannot retrieve username password upon addition of new user
         return "/admin/editUser";
     }
 
@@ -135,8 +107,6 @@ public class AdminController {
         userDAO.save(user);
         return new RedirectView("/admin/");
     }
-
-
 
     @RequestMapping("uploadUsers")
     public String uploadUsers() {       //passing string on to a jsp to view
@@ -229,7 +199,30 @@ public class AdminController {
 
 
 }
+//    @RequestMapping(value="addNewEmployee")
+//    public String addNewEmployee(ModelMap model) {
+//        model.addAttribute("user", new Employee());
+//        model.addAttribute("roleTypes", RoleType.values());
+//        return "admin/addNewEmployee";
+//    }
 
+//    @RequestMapping(value="saveNewEmployee")
+//    public View saveNewEmployee(Employee user) {
+//        employeeDAO.save(user);
+//        return new RedirectView("/admin/");
+//    }
+
+//    @RequestMapping(value="editEmployee")
+//    public String editEmployee(String employeeID,ModelMap model) {
+////        System.out.println("Employee ID is: " + employeeID); //used for debugging
+//        Employee user = employeeDAO.findOne(Long.valueOf(employeeID));  //changes string empID to long
+//        model.addAttribute("user",user);
+//        model.addAttribute("roleTypes", RoleType.values());
+////        Admin admin = adminDAO.findOne(employeeID);
+////        adminModel.addAttribute("admin",admin);
+////        return "/admin/editEmployee";
+//        return "/admin/editEmployee";
+//    }
 //    //this routes from EDIT user
 //    @RequestMapping(value="viewEmployee")
 //    public View viewEmployee(Long employeeID,ModelMap model, Long adminID, ModelMap adminModel) {

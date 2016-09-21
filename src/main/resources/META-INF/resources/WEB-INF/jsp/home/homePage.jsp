@@ -29,6 +29,7 @@
             <a class="two" href="/home/pastProjects">Past Projects</a>
             <a class="two" href="/home/contactUs">Contact Us</a>
             <a class="two" href="/home/employmentOpportunities">Employment Opportunities</a>
+            <a class="two" href="/addNewUser">Add User</a>
         <li style="float:right" ><a class="two" href="/login">Log In</a></li>
         <%--<li style="float:right" ><a href="/logout">Log Out</a></li>--%>
         </li>
