@@ -1,0 +1,76 @@
+h1 {
+    background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");
+    border: 2px solid #949599;
+    height: 35px;
+    width: calc(100% - 24px);
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    font-family: "Times New Roman";
+    text-decoration: none;
+}
+table {
+    float:  left;}
+
+table, tr, th {list-style-type: none;
+    margin: 5px;
+    padding: 2px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+}
+
+
+
+ul {
+    background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");
+    position: fixed;
+    bottom: 0;
+    width: calc(100% - 24px);%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #555;
+    font-variant-caps: small-caps;
+}
+
+li a {
+    display: block;
+    width: auto;
+    opacity: 0.5;
+    background-color: black;
+    color: white;
+}
+
+li a:hover {
+    background-color: grey;
+}
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+
+li, a {
+    /*align-content: space-between;*/
+    /*position: absolute;*/
+    padding: 8px;
+    display: inline;
+    float: left;
+    /*bottom: 0;*/
+    /*left: 0;*/
+}
+
+
+form {
+    margin: 5px;
+    padding: 2px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+}
+
+
+/*below here is calendar code*/

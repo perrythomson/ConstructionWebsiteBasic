@@ -15,7 +15,7 @@
 
 <h1>ADMIN:  Add Employee</h1>
 
-<form name="newEmployeeForm" method="POST" action="/admin/saveNewUser"> <!-- post information is readable get information is hidden !-->
+<form name="newEmployeeForm" method="POST" action="/admin/saveNewEmployee"> <!-- post information is readable get information is hidden !-->
         Role Type: <select name="roleType">
             <c:forEach var="roleType" items="${roleTypes}">
             <option value="<c:out value="${roleType}"/>"><c:out value="${roleType}"/></option></c:forEach>

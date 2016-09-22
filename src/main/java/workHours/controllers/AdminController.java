@@ -18,10 +18,15 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
-import workHours.entities.User;
-import workHours.entities.UserDAO;
-import workHours.entities.UserRole;
-import workHours.entities.UserRoleDAO;
+import workHours.entities.Employee;
+import workHours.entities.EmployeeDAO;
+import workHours.entities.JobSeeker;
+import workHours.entities.JobSeekerDAO;
+import workHours.entities.Admin;
+import workHours.entities.AdminDAO;
+import workHours.entities.RoleType;
+import workHours.entities.JobSeeker;
+import workHours.entities.JobSeekerDAO;
 
 
 @Controller
@@ -31,16 +36,16 @@ public class AdminController {
     private final JobSeekerDAO jobSeekerDAO;
     private final AdminDAO adminDAO;                                     // DAO provide some specific data operations without exposing details of the database
     private final TimeSheetTrackerDAO timeSheetTrackerDAO;
+    private final EmployeeDAO employeeDAO;
 
-    private final UserDAO userDAO;
-    private final UserRoleDAO userRoleDAO;
-    private final PasswordEncoder passwordEncoder;
+//    private final UserDAO userDAO;
+//    private final UserRoleDAO userRoleDAO;
+//    private final PasswordEncoder passwordEncoder;
 
 
-    public AdminController( AdminDAO adminDAO, JobSeekerDAO jobSeekerDAO, TimeSheetTrackerDAO timeSheetTrackerDAO, UserDAO userDAO, UserRoleDAO userRoleDAO, PasswordEncoder passwordEncoder) {
-        this.userDAO = userDAO;
-        this.userRoleDAO = userRoleDAO;
-        this.passwordEncoder = passwordEncoder;
+    public AdminController( AdminDAO adminDAO, JobSeekerDAO jobSeekerDAO, TimeSheetTrackerDAO timeSheetTrackerDAO, EmployeeDAO employeeDAO) {
+        Assert.notNull(employeeDAO, "EmployeeDAO must not be null!");
+        this.employeeDAO = employeeDAO;
         Assert.notNull(adminDAO, "AdminDAO must not be null!");
         this.adminDAO = adminDAO;
         Assert.notNull(timeSheetTrackerDAO, "TimeSheetTrackerDAO must not be null!");  //Assert extends object validates method arguments...it will not be if you do not meet my criteria
@@ -50,9 +55,9 @@ public class AdminController {
     }
 
     @RequestMapping(value="/")    //Annotation for mapping web requests onto specific handler classes and/or handler methods
-    public String allUsers(ModelMap model) {
-        Iterable<User> users = userDAO.findAll();
-        model.addAttribute("users",users);
+    public String allEmployees(ModelMap model) {
+        Iterable<Employee> employees = employeeDAO.findAll();
+        model.addAttribute("employees",employees);
         model.addAttribute("roleTypes", RoleType.values());
 
         Iterable<JobSeeker> jobSeekers = jobSeekerDAO.findAll();  //pulling information to the same home page need logic for all db objects
@@ -60,68 +65,57 @@ public class AdminController {
         return "admin/adminHomePage";
     }
 
-    @RequestMapping(value="addNewUser")
-    public String addNewUser(ModelMap model) {
-        model.addAttribute("user", new User());
+    @RequestMapping(value="addNewEmployee")
+    public String addNewEmployee(ModelMap model) {
+        model.addAttribute("employee", new Employee());
         model.addAttribute("roleTypes", RoleType.values());
-        return "admin/addNewUser";
+        return "admin/addNewEmployee";
     }
 
-    @RequestMapping(value="/securePage")
-    public String securePage() {
-        return "secure/securePage";
+    @RequestMapping(value="deleteEmployee")
+    public View deleteEmployee(Long id) {                       //this method is to delete question
+        Employee employee = employeeDAO.findOne(id);
+        employeeDAO.delete(employee);  //going to the dao, deleting that particular question
+        return new RedirectView("/admin/");
     }
 
-
-    @RequestMapping(value="/saveNewUser")
-    public String saveUser(Long userId, String username, String password, String email, String firstName, String lastName, String phone, String Address, double Salary ) {
-        User user = new User(username,passwordEncoder.encode(password),1,email);
-        userDAO.save(user);
-        UserRole userRole = new UserRole();
-        userRole.setUserid(user.getUserId());
-        userRole.setRole("USER");
-        userRoleDAO.save(userRole);
-//        return new RedirectView("/securePage");
-        return "admin/adminHomePage";
+    @RequestMapping(value="saveNewEmployee")
+    public View saveNewEmployee(Employee user) {
+        employeeDAO.save(user);
+        return new RedirectView("/admin/");
     }
 
-
-    @RequestMapping(value="editUser")
-    public String editUser(Long userId,ModelMap model) {
+    @RequestMapping(value="editEmployee")
+    public String editEmployee(String employeeID,ModelMap model) {
 //        System.out.println("Employee ID is: " + employeeID); //used for debugging
-        User user = userDAO.findOne(Long.valueOf(userId));  //changes string empID to long
-        model.addAttribute("user",user);
+        Employee user = employeeDAO.findOne(Long.valueOf(employeeID));  //changes string empID to long
+        model.addAttribute("employee",user);
         model.addAttribute("roleTypes", RoleType.values());
-        return "/admin/editUser";
+//        Admin admin = adminDAO.findOne(employeeID);
+//        adminModel.addAttribute("admin",admin);
+//        return "/admin/editEmployee";
+        return "/admin/editEmployee";
     }
-
-    @RequestMapping(value="deleteUser")
-    public View deleteUser(Long id) {                       //this method is to delete question
-        User user = userDAO.findOne(id);
-        userDAO.delete(user);  //going to the dao, deleting that particular question
+    @RequestMapping(value="saveEditedEmployee")
+    public View saveEditedUser(Employee employee) {
+        employeeDAO.save(employee);
         return new RedirectView("/admin/");
     }
 
-    @RequestMapping(value="saveEditedUser")
-    public View saveEditedUser(User user) {
-        userDAO.save(user);
-        return new RedirectView("/admin/");
+    @RequestMapping("uploadEmployees")
+    public String uploadEmployees() {       //passing string on to a jsp to view
+        return "admin/uploadEmployees";
     }
 
-    @RequestMapping("uploadUsers")
-    public String uploadUsers() {       //passing string on to a jsp to view
-        return "admin/uploadUsers";
-    }
-
-    @RequestMapping("saveUploadedUsers")
-    public View saveUploadedUsers(MultipartFile UsersFile) {
+    @RequestMapping("saveUploadedEmployees")
+    public View saveUploadedEmployees(MultipartFile EmployeesFile) {
         String returnView = "";
-        if (!UsersFile.isEmpty()) {
+        if (!EmployeesFile.isEmpty()) {
             try {
-                String pathString = "/Users/perrythomson/UPLOADS_Capstone_Users/";
-                Files.write(Paths.get(pathString+UsersFile.getOriginalFilename()),UsersFile.getBytes());
+                String pathString = "/Users/perrythomson/UPLOADS_Capstone_Employees/";
+                Files.write(Paths.get(pathString+EmployeesFile.getOriginalFilename()),EmployeesFile.getBytes());
                 System.out.println("-------- File Upload Successful");
-                addUploadToDatabase(pathString+UsersFile.getOriginalFilename()); //passing the file location which need to be the same as 2 lines above
+                addUploadToDatabase(pathString+EmployeesFile.getOriginalFilename()); //passing the file location which need to be the same as 2 lines above
             } catch (IOException | RuntimeException e) {                    //two exceptions at once J8 short code
                 e.printStackTrace();
             }
@@ -135,15 +129,15 @@ public class AdminController {
         try {
             Path userUploadedFilePath = Paths.get(filePath);
             ObjectMapper mapper = new ObjectMapper();  //map json to entities
-            List<User> uploadedUsers = mapper.readValue(Files.newInputStream(userUploadedFilePath), new TypeReference<List<User>>(){});
-            for(User uploadedUser : uploadedUsers) {  //creating new id's so that it doesn't barf and error
-                User user = new User();
-                user.setFirstName(uploadedUser.getFirstName());
-                user.setLastName(uploadedUser.getLastName());
-                user.setPhone(uploadedUser.getPhone());
-                user.setAddress(uploadedUser.getAddress());
-                user.setSalary(uploadedUser.getSalary());
-                userDAO.save(user);
+            List<Employee> uploadedEmployees = mapper.readValue(Files.newInputStream(userUploadedFilePath), new TypeReference<List<Employee>>(){});
+            for(Employee uploadedUser : uploadedEmployees) {  //creating new id's so that it doesn't barf and error
+                Employee employee = new Employee();
+                employee.setFirstName(uploadedUser.getFirstName());
+                employee.setLastName(uploadedUser.getLastName());
+                employee.setPhone(uploadedUser.getPhone());
+                employee.setAddress(uploadedUser.getAddress());
+                employee.setSalary(uploadedUser.getSalary());
+                employeeDAO.save(employee);
             }
         } catch (IOException ioe) {
             System.out.println("Issue reading List from JSON file");
@@ -157,9 +151,7 @@ public class AdminController {
     }
 
     @RequestMapping("saveUploadedTimeSheet")
-    public View saveUploadedTimeSheet(MultipartFile TimeSheetsFile) {  //multipartfile is one of the types of things I can pass from the method
-        //can be a json file or image, etc, anything that has its own stuff
-        //TODO research View from signature
+    public View saveUploadedTimeSheet(MultipartFile TimeSheetsFile) {
         String returnView = "";
         if (!TimeSheetsFile.isEmpty()) {
             try {//(below) get current file name...get contents
@@ -199,35 +191,12 @@ public class AdminController {
 
 
 }
-//    @RequestMapping(value="addNewEmployee")
-//    public String addNewEmployee(ModelMap model) {
-//        model.addAttribute("user", new Employee());
-//        model.addAttribute("roleTypes", RoleType.values());
-//        return "admin/addNewEmployee";
-//    }
 
-//    @RequestMapping(value="saveNewEmployee")
-//    public View saveNewEmployee(Employee user) {
-//        employeeDAO.save(user);
-//        return new RedirectView("/admin/");
-//    }
-
-//    @RequestMapping(value="editEmployee")
-//    public String editEmployee(String employeeID,ModelMap model) {
-////        System.out.println("Employee ID is: " + employeeID); //used for debugging
-//        Employee user = employeeDAO.findOne(Long.valueOf(employeeID));  //changes string empID to long
-//        model.addAttribute("user",user);
-//        model.addAttribute("roleTypes", RoleType.values());
-////        Admin admin = adminDAO.findOne(employeeID);
-////        adminModel.addAttribute("admin",admin);
-////        return "/admin/editEmployee";
-//        return "/admin/editEmployee";
-//    }
-//    //this routes from EDIT user
+//    //this routes from EDIT employee
 //    @RequestMapping(value="viewEmployee")
 //    public View viewEmployee(Long employeeID,ModelMap model, Long adminID, ModelMap adminModel) {
-//        Employee user = employeeDAO.findOne(employeeID);
-//        model.addAttribute("user",user);
+//        Employee employee = employeeDAO.findOne(employeeID);
+//        model.addAttribute("employee",employee);
 ////        Admin admin = adminDAO.findOne(employeeID);
 ////        adminModel.addAttribute("admin",admin);
 ////        return "/admin/editEmployee";

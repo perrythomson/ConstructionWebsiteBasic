@@ -8,10 +8,14 @@ import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
-import workHours.entities.User;
-import workHours.entities.UserDAO;
-import workHours.entities.UserRole;
-import workHours.entities.UserRoleDAO;
+import workHours.entities.Employee;
+import workHours.entities.EmployeeDAO;
+import workHours.entities.Admin;
+import workHours.entities.AdminDAO;
+import workHours.entities.JobSeeker;
+import workHours.entities.JobSeekerDAO;
+import workHours.entities.RoleType;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -50,34 +54,8 @@ public class DefaultJspController {
         if(request.isUserInRole("ADMIN")) {
             return "redirect:/admin/";
         }
-        return "redirect:/user/";
+        return "redirect:/employee/";
     }
 
-    @RequestMapping(value="/addNewUser")
-    public String addUser() {
-        return "addUser";
-    }
 
-    private final UserDAO userDAO;
-    private final UserRoleDAO userRoleDAO;
-    private final PasswordEncoder passwordEncoder;
-
-    public DefaultJspController(UserDAO userDAO, UserRoleDAO userRoleDAO, PasswordEncoder passwordEncoder) {
-        Assert.notNull(userDAO, "UserDAO must not be null!");
-        Assert.notNull(userRoleDAO, "UserRolesDAO must not be null!");
-        Assert.notNull(passwordEncoder, "PasswordEncoder must not be null!");
-        this.userDAO = userDAO;
-        this.userRoleDAO = userRoleDAO;
-        this.passwordEncoder = passwordEncoder;
-    }
-    @RequestMapping(value="/saveNewUser")
-    public View saveUser(String username, String password, String email) {
-        User user = new User(username,passwordEncoder.encode(password),1,email);
-        userDAO.save(user);
-        UserRole userRole = new UserRole();
-        userRole.setUserid(user.getUserId());
-        userRole.setRole("USER");
-        userRoleDAO.save(userRole);
-        return new RedirectView("/securePage");
-    }
 }
