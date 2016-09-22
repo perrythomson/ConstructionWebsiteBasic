@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
     <title>Employee Time Entry Page</title>
-    <link href="/frontEndFiles/css/userHomePage.css" rel="stylesheet" type="text/css" />
+    <link href="/frontEndFiles/css/employeeHomePage.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>

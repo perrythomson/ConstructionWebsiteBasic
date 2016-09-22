@@ -204,7 +204,7 @@
         <th> Delete Employee</th>
     </tr>
 
-    <c:forEach items="${users}" var="user">
+    <c:forEach items="${employees}" var="employee">
         <tr>
             <%--<td><a href="/admin/viewEmployee?employeeID=${employee.employeeID}"><c:out value="${employee.employeeID}" /></a></td>--%>
             <td align="center"><c:out value="${user.userID}" /></td>

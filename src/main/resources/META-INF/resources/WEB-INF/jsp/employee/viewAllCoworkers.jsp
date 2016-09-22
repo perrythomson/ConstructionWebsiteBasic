@@ -52,7 +52,7 @@
 <ul>
     <li>
         <a href="/"> Home </a>
-        <a href="/employee/employeeHomePage"> Employee Home Page </a>
+        <a href="/employee/"> Employee Home Page </a>
         <a href="/admin/viewAllPayPeriods"> View All Pay Periods </a>
     <li style="float:right" ><a href="/logout">Log Out</a></li>
     </li>
