@@ -8,24 +8,25 @@
     <link href="/frontEndFiles/css/pastProjects.css" rel="stylesheet" type="text/css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/frontEndFiles/css/pictures.css">
+    <link rel="stylesheet" href="/frontEndFiles/css/pastProjects.css">
     <style>
         .mySlides {display:none;}
     </style>
 
 </head>
-<body>
+<div>
 <h1>BFE Construction:  Past Projects</h1>
-
-
-<h2 class="w3-center">Slideshow</h2>
-
-<div class="w3-content w3-section" style="max-width:500px">
-    <img class="mySlides" src="/frontEndFiles/css/pictures/project_modern_house_2.jpg" style="width:100%">
-    <img class="mySlides" src="/frontEndFiles/css/pictures/project_modern_house_1.jpg" style="width:100%">
-    <img class="mySlides" src="/frontEndFiles/css/pictures/project_deck.jpg" style="width:100%">
 </div>
 
+
+<div class="slide_parent">
+    <h2 class="w3-center">Slideshow</h2>
+    <div class="w3-content w3-section" >
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_2.jpg">
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_1.jpg">
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_deck.jpg" >
+    </div>
+</div>
 <script>
     var myIndex = 0;
     carousel();
@@ -39,7 +40,8 @@
         myIndex++;
         if (myIndex > x.length) {myIndex = 1}
         x[myIndex-1].style.display = "block";
-        setTimeout(carousel, 2000); // Change image every 2 seconds
+        x[myIndex-1].style.className = "slide";
+        setTimeout(carousel, 3000); // Change image every 2 seconds
     }
 </script>
 

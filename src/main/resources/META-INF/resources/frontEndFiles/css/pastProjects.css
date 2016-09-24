@@ -1,3 +1,29 @@
+.slide_parent {
+    width: 100%;
+    height: calc(100% - 135px);
+}
+
+.w3-content {
+    width:500px;
+    margin: auto;
+}
+
+/*.mySlides{*/
+    /*width: 100%;*/
+    /*max-height: 100%;*/
+/*}*/
+
+.slide {
+    width: auto;
+    height: calc(100% - 4em);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    text-align: center;
+}
+
 h1 {
     background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");
     border: 2px solid #949599;
