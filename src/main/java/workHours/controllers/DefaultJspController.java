@@ -53,7 +53,10 @@ public class DefaultJspController {
         return "redirect:/employee/";
     }
 
-
+    @RequestMapping(value="/addNewUser")
+    public String addUser() {
+        return "addUser";
+    }
 
 
 //    @RequestMapping(value="/logout")
