@@ -32,7 +32,7 @@
     <c:forEach items="${users}" var="user">
         <tr>
                 <%--<td><a href="/admin/viewUser?userID=${user.userID}"><c:out value="${user.userID}" /></a></td>--%>
-            <td align="center"><c:out value="${user.userID}" /></td>
+            <td align="center"><c:out value="${user.userId}" /></td>
             <td><c:out value="${roleType.roleType}" /></td>
             <th>  </th>
             <td><c:out value="${user.firstName}" /></td>

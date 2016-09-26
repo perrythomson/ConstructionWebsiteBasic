@@ -10,7 +10,7 @@
 <table>
     <tr>
         <td>ID:</td>
-        <td><c:out value="${user.userID}" /></td>
+        <td><c:out value="${user.userId}" /></td>
     </tr>
     <tr>
         <td>First Name:</td>

@@ -24,12 +24,12 @@ public class HomeController {
         return "home/homePage";
     }
 
-     @RequestMapping(value="/contactUs")
-     public String contactUs(ModelMap model) {
-            return "home/contactUs";
-     }
-
-
+//     @RequestMapping(value="/contactUs")
+//     public String contactUs(ModelMap model) {
+//            return "home/contactUs";
+//     }
+//
+//
 
      @RequestMapping(value="/pastProjects")
      public String pastProjects() {

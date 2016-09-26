@@ -29,7 +29,7 @@
 
     <c:forEach items="${users}" var="user">
         <tr>
-            <a href="/user/editUserContactInfo?userID=${user.userID}">Edit</a>
+            <a href="/user/editUserContactInfo?userID=${user.userId}">Edit</a>
             <td><c:out value="${roleType.roleType}" /></td>
             <th>  </th>
             <td><c:out value="${user.firstName}" /></td>
@@ -68,7 +68,7 @@
             <%for(int j = 0; j < 7; j++){ %>
             <tr>
                  <td><input type="text" name="timeSheetID" required="required" value="<c:out value="${timeSheetTracker.timeSheetID}" />" readonly /></td>
-                 <td><input type="text" name="userID" required="required" value="<c:out value="${user.userID}" />" readonly /></td>
+                 <td><input type="text" name="userId" required="required" value="<c:out value="${user.userId}" />" readonly /></td>
                  <td><input type=date step=7 min=2016-01-01 > </td>
                  <%--<td><input type=week step=2 min=2014-W30></td>--%>
                  <%--<td><input type="date" id="date" name="date"/></td>--%>

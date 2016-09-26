@@ -22,11 +22,9 @@ import workHours.entities.User;
 import workHours.entities.UserDAO;
 import workHours.entities.JobSeeker;
 import workHours.entities.JobSeekerDAO;
-import workHours.entities.Admin;
 import workHours.entities.AdminDAO;
 import workHours.entities.RoleType;
-import workHours.entities.JobSeeker;
-import workHours.entities.JobSeekerDAO;
+import workHours.entities.InterestedPartyDAO;
 
 
 @Controller
@@ -39,13 +37,14 @@ public class AdminController {
     private final UserDAO userDAO;
     private final PasswordEncoder passwordEncoder;
     private final UserRoleDAO userRoleDAO;
+    private final InterestedPartyDAO interestedPartyDAO;
 
 //    private final UserDAO userDAO;
 //    private final UserRoleDAO userRoleDAO;
 //    private final PasswordEncoder passwordEncoder;
 
 
-    public AdminController( UserRoleDAO userRoleDAO, PasswordEncoder passwordEncoder, AdminDAO adminDAO, JobSeekerDAO jobSeekerDAO, TimeSheetTrackerDAO timeSheetTrackerDAO, UserDAO userDAO) {
+    public AdminController(InterestedPartyDAO interestedPartyDAO, UserRoleDAO userRoleDAO, PasswordEncoder passwordEncoder, AdminDAO adminDAO, JobSeekerDAO jobSeekerDAO, TimeSheetTrackerDAO timeSheetTrackerDAO, UserDAO userDAO) {
         Assert.notNull(userDAO, "UserDAO must not be null!");
         this.userDAO = userDAO;
         Assert.notNull(adminDAO, "AdminDAO must not be null!");
@@ -58,6 +57,8 @@ public class AdminController {
         this.passwordEncoder = passwordEncoder;
         Assert.notNull(userRoleDAO, "UserRoleDAO must not be null!");
         this.userRoleDAO = userRoleDAO;
+        Assert.notNull(interestedPartyDAO, "InterestedPartyDAO must not be null!");
+        this.interestedPartyDAO = interestedPartyDAO;
     }
 
     @RequestMapping(value="/")    //Annotation for mapping web requests onto specific handler classes and/or handler methods
@@ -69,6 +70,11 @@ public class AdminController {
         Iterable<JobSeeker> jobSeekers = jobSeekerDAO.findAll();  //pulling information to the same home page need logic for all db objects
         model.addAttribute("jobSeekers", jobSeekers);
         return "admin/adminHomePage";
+
+
+//        Iterable<InterestedParty> contactUss = contactUsDAO.findAll();
+//        model.addAttribute("contactUss", contactUss);
+//        return "admin/adminHomePage";
     }
 
 //    @RequestMapping(value="addNewUser")
@@ -108,12 +114,12 @@ public class AdminController {
     }
 
     @RequestMapping(value="editUser")
-    public String editUser(String userID,ModelMap model) {
-//        System.out.println("User ID is: " + userID); //used for debugging
-        User user = userDAO.findOne(Long.valueOf(userID));  //changes string empID to long
+    public String editUser(String userId,ModelMap model) {
+//        System.out.println("User ID is: " + userId); //used for debugging
+        User user = userDAO.findOne(Long.valueOf(userId));  //changes string empID to long
         model.addAttribute("user",user);
         model.addAttribute("roleTypes", RoleType.values());
-//        Admin admin = adminDAO.findOne(userID);
+//        Admin admin = adminDAO.findOne(userId);
 //        adminModel.addAttribute("admin",admin);
 //        return "/admin/editUser";
         return "/admin/editUser";
@@ -216,10 +222,10 @@ public class AdminController {
 
 //    //this routes from EDIT user
 //    @RequestMapping(value="viewUser")
-//    public View viewUser(Long userID,ModelMap model, Long adminID, ModelMap adminModel) {
-//        User user = userDAO.findOne(userID);
+//    public View viewUser(Long userId,ModelMap model, Long adminID, ModelMap adminModel) {
+//        User user = userDAO.findOne(userId);
 //        model.addAttribute("user",user);
-////        Admin admin = adminDAO.findOne(userID);
+////        Admin admin = adminDAO.findOne(userId);
 ////        adminModel.addAttribute("admin",admin);
 ////        return "/admin/editUser";
 //        return new RedirectView("/admin/editUser");

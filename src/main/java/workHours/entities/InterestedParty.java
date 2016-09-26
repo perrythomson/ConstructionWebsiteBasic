@@ -5,12 +5,11 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "jobSeeker")
-public class JobSeeker {
-
+@Table(name = "contactUs")
+public class InterestedParty {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long jobSeekerID;
+    private Long contactUsID;
 
     @NotNull
     private String email;
@@ -24,14 +23,24 @@ public class JobSeeker {
     @NotNull
     private String form;
 
+    @NotNull
+    private String location;
 
 
-    public Long getJobSeekerID() {
-        return jobSeekerID;
+    public String getLocation() {
+        return location;
     }
 
-    public void setJobSeekerID(Long jobSeekerID) {
-        this.jobSeekerID = jobSeekerID;
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Long getContactUsID() {
+        return contactUsID;
+    }
+
+    public void setContactUsID(Long contactUsID) {
+        this.contactUsID = contactUsID;
     }
 
     public String getEmail() {

@@ -36,8 +36,8 @@ public class UserController {
     }
     //TODO This method prevents userHomePage from working error 500
 //    @RequestMapping(value="/")
-//    public String userHomePage(String userID, ModelMap model) {
-//        User user = userDAO.findOne(Long.valueOf(userID));  //this is going to have username/password info rather than find by empID
+//    public String userHomePage(String userId, ModelMap model) {
+//        User user = userDAO.findOne(Long.valueOf(userId));  //this is going to have username/password info rather than find by empID
 //        model.addAttribute("user",user);
 //        model.addAttribute("roleTypes", RoleType.values());
 //
@@ -63,12 +63,12 @@ public class UserController {
 
 
     @RequestMapping(value="editUserContactInfo")
-    public String editUser(String userID,ModelMap model) {
-//        System.out.println("User ID is: " + userID);
-        User user = userDAO.findOne(Long.valueOf(userID));  //changes string empID to long
+    public String editUser(String userId,ModelMap model) {
+//        System.out.println("User ID is: " + userId);
+        User user = userDAO.findOne(Long.valueOf(userId));  //changes string empID to long
         model.addAttribute("user",user);
         model.addAttribute("roleTypes", RoleType.values());
-//        Admin admin = adminDAO.findOne(userID);
+//        Admin admin = adminDAO.findOne(userId);
 //        adminModel.addAttribute("admin",admin);
 //        return "/admin/editUser";
         return "/user/editUserContactInfo";

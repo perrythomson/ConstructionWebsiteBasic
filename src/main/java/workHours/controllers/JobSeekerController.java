@@ -8,9 +8,7 @@ import org.springframework.web.servlet.View;
 import workHours.entities.JobSeeker;
 import workHours.entities.JobSeekerDAO;
 
-/**
- * Created by perrythomson on 9/16/16.
- */
+
 @Controller
 public class JobSeekerController {
 

@@ -13,7 +13,7 @@
 
 <br><br>
 <form name="updateUserForm" method="POST" action="/admin/">
-    User ID: <input type="text" name="userID" value="<c:out value="${user.userID}" />" readonly /><br>
+    User ID: <input type="text" name="userId" value="<c:out value="${user.userId}" />" readonly /><br>
     Role Type: <select name="roleType">
     <c:forEach var="roleType" items="${roleTypes}">
         <option value="<c:out value="${roleType}"/>"><c:out value="${roleType}"/></option></c:forEach>

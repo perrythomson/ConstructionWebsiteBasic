@@ -14,17 +14,28 @@
     </style>
 
 </head>
+<body>
 <div>
 <h1>BFE Construction:  Past Projects</h1>
 </div>
 
 
 <div class="slide_parent">
-    <h2 class="w3-center">Slideshow</h2>
+    <h2 class="w3-center"> ~ Architectural Construction ~ </h2>
     <div class="w3-content w3-section" >
-        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_2.jpg">
         <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_1.jpg">
-        <img class="mySlides slide" src="/frontEndFiles/pictures/project_deck.jpg" >
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_2.jpg">
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_3.jpg">
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_4.jpg">
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_5.jpg">
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_6.jpg">
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_7.jpg">
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_8.jpg">
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_9.jpg">
+        <%--<img class="mySlides slide" src="/frontEndFiles/pictures/project_modern_house_11.jpg">--%>
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_stairs_1.jpg" >
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_stairs_2.jpg" >
+        <img class="mySlides slide" src="/frontEndFiles/pictures/project_stairs_3.jpg" >
     </div>
 </div>
 <script>
@@ -41,16 +52,16 @@
         if (myIndex > x.length) {myIndex = 1}
         x[myIndex-1].style.display = "block";
         x[myIndex-1].style.className = "slide";
-        setTimeout(carousel, 3000); // Change image every 2 seconds
+        setTimeout(carousel, 2000); // Change image every 2 seconds
     }
 </script>
 
 
 <ul>
     <li>
-        <a href="/">Home Page</a>
-        <a href="/home/contactUs">Contact Us</a>
-        <a href="/home/employmentOpportunities">Employment Opportunities</a>
+        <a class="two" href="/">Home Page</a>
+        <a class="two" href="/home/contactUs">Contact Us</a>
+        <a class="two" href="/home/employmentOpportunities">Employment Opportunities</a>
     <%--<li style="float:right" ><a class="two" href="/login">Log In</a></li>--%>
     <%--<li style="float:right" ><a href="/logout">Log Out</a></li>--%>
     </li>
