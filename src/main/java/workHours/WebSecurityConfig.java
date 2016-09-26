@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/home/*",  "/frontEndFiles/css/*", "/frontEndFiles/pictures/*", "/addUser", "/addNewUser").permitAll()
+                .antMatchers("/", "/home/*",  "/frontEndFiles/css/*", "/frontEndFiles/pictures/*", "/admin/*").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -43,24 +43,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        http.csrf().disable();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("bob").password("pass").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("sally").password("pass").roles("Employee");
-    }
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication().withUser("bob").password("pass").roles("ADMIN");
+//        auth.inMemoryAuthentication().withUser("sally").password("pass").roles("User");
+//    }
 
 
 
     //addition of multiple login
 
-//    @Autowired
-//    private UserDetailsService userDetailsService;
-//
-//    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
-//    }
-//
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
+    }
+
+    @Bean(name="passwordEncoder")
+    public PasswordEncoder passwordencoder(){
+        return new BCryptPasswordEncoder();
+    }
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
 //        http
@@ -75,10 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .logout()
 //                .permitAll();
 //    }
-//
-//    @Bean(name="passwordEncoder")
-//    public PasswordEncoder passwordencoder(){
-//        return new BCryptPasswordEncoder();
-//    }
+
+
 }
 

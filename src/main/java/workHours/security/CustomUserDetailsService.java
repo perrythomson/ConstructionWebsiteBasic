@@ -9,6 +9,7 @@ import workHours.entities.User;
 import workHours.entities.UserDAO;
 import workHours.entities.UserRoleDAO;
 
+
 import java.util.List;
 
 @Service("customUserDetailsService")
@@ -25,13 +26,14 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User employee= userDAO.findByUserName(username);
-        if(null == employee){
-            throw new UsernameNotFoundException("No employee present with username: "+username);
+        User user= userDAO.findByUserName(username);
+        if(null == user){
+            throw new UsernameNotFoundException("No user present with username: "+username);
         }else{
             List<String> userRoles= userRoleDAO.findRoleByUserName(username);
-            return new CustomUserDetails(employee,userRoles);
+            return new CustomUserDetails(user,userRoles);
         }
     }
+
 
 }

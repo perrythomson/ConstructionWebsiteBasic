@@ -5,12 +5,12 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
-    <title>Employee Time Entry Page</title>
-    <link href="/frontEndFiles/css/employeeHomePage.css" rel="stylesheet" type="text/css" />
+    <title>User Time Entry Page</title>
+    <link href="/frontEndFiles/css/userHomePage.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
-<h1>BFE Construction: Employee Home Page</h1>
+<h1>BFE Construction: User Home Page</h1>
 <table>
     <tr>
         <th> Edit-Emp </th>
@@ -27,19 +27,19 @@
         <th> </th>
     </tr>
 
-    <c:forEach items="${employees}" var="employee">
+    <c:forEach items="${users}" var="user">
         <tr>
-            <a href="/employee/editEmployeeContactInfo?employeeID=${employee.employeeID}">Edit</a>
+            <a href="/user/editUserContactInfo?userID=${user.userID}">Edit</a>
             <td><c:out value="${roleType.roleType}" /></td>
             <th>  </th>
-            <td><c:out value="${employee.firstName}" /></td>
-            <td><c:out value="${employee.lastName}" /></td>
+            <td><c:out value="${user.firstName}" /></td>
+            <td><c:out value="${user.lastName}" /></td>
             <th>  </th>
-            <td><c:out value="${employee.phone}" /></td>
+            <td><c:out value="${user.phone}" /></td>
             <th>  </th>
-            <td><c:out value="${employee.address}" /></td>
+            <td><c:out value="${user.address}" /></td>
             <th>  </th>
-            <td align="right"><span class="dollars"><c:out value="${employee.salary}" /></span></td>
+            <td align="right"><span class="dollars"><c:out value="${user.salary}" /></span></td>
             <th>  </th>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </tr>
@@ -48,14 +48,14 @@
 
 <br><br>
 
-<form action="TimeSheet" method="post" action="/employee/employeeTimeSheet">
+<form action="TimeSheet" method="post" action="/user/userTimeSheet">
 
     <fieldset style="width: 80%">
         <h2>Weekly Time Sheet</h2>
         <table border=1>
             <tr>
                 <th>Time Sheet ID</th>
-                <th>Employee ID</th>
+                <th>User ID</th>
                 <th>Date</th>
                 <th>Start Time</th>
                 <th>End Time</th>
@@ -68,7 +68,7 @@
             <%for(int j = 0; j < 7; j++){ %>
             <tr>
                  <td><input type="text" name="timeSheetID" required="required" value="<c:out value="${timeSheetTracker.timeSheetID}" />" readonly /></td>
-                 <td><input type="text" name="employeeID" required="required" value="<c:out value="${employee.employeeID}" />" readonly /></td>
+                 <td><input type="text" name="userID" required="required" value="<c:out value="${user.userID}" />" readonly /></td>
                  <td><input type=date step=7 min=2016-01-01 > </td>
                  <%--<td><input type=week step=2 min=2014-W30></td>--%>
                  <%--<td><input type="date" id="date" name="date"/></td>--%>
@@ -92,7 +92,7 @@
     <li>
         <a href="/"> Home </a>
         <a href="/admin/viewAllPayPeriods"> View All Pay Periods </a>
-        <a href="/employee/viewAllCoworkers"> View All Coworkers </a>
+        <a href="/user/viewAllCoworkers"> View All Coworkers </a>
     <li style="float:right" ><a href="/logout">Log Out</a></li>
     </li>
 </ul>
@@ -108,10 +108,10 @@
 <%--get(Calendar.YEAR): year--%>
 <%--get(Calendar.MONTH): returns 0 (Calendar.JANUARY) to 11 (Calendar.DECEMBER).--%>
 
-<%--<form name="employeeTimeEntry" method="POST" action="/employeeTimeEntry">--%>
-<%--Employee ID: <input type="text" name="employeeID" value="<c:out value="${employee.employeeID}" />" readonly /><br>--%>
-<%--First Name: <input type="text" name="firstName" value="<c:out value="${employee.firstName}" />" readonly /><br>--%>
-<%--Last Name: <input type="text" name="lastName" value="<c:out value="${employee.lastName}" />" readonly /><br>--%>
+<%--<form name="userTimeEntry" method="POST" action="/userTimeEntry">--%>
+<%--User ID: <input type="text" name="userID" value="<c:out value="${user.userID}" />" readonly /><br>--%>
+<%--First Name: <input type="text" name="firstName" value="<c:out value="${user.firstName}" />" readonly /><br>--%>
+<%--Last Name: <input type="text" name="lastName" value="<c:out value="${user.lastName}" />" readonly /><br>--%>
 
 <%--&lt;%&ndash;<table>&ndash;%&gt;--%>
 <%--&lt;%&ndash;<tbody>&ndash;%&gt;--%>
@@ -138,37 +138,37 @@
 
             <%--<tr>--%>
             <%--<td>RoleType:</td>--%>
-            <%--<td><c:out value="${employee.roleType}" /></td>--%>
+            <%--<td><c:out value="${user.roleType}" /></td>--%>
             <%--</tr>--%>
             <%--<tr>--%>
             <%--<td>ID:</td>--%>
-            <%--<td><c:out value="${employee.employeeID}" /></td>--%>
+            <%--<td><c:out value="${user.userID}" /></td>--%>
             <%--</tr>--%>
             <%--<tr>--%>
             <%--<td>First Name:</td>--%>
-            <%--<td><c:out value="${employee.firstName}" /></td>--%>
+            <%--<td><c:out value="${user.firstName}" /></td>--%>
             <%--</tr>--%>
             <%--<tr>--%>
             <%--<td>Last Name:</td>--%>
-            <%--<td><c:out value="${employee.lastName}" /></td>--%>
+            <%--<td><c:out value="${user.lastName}" /></td>--%>
             <%--</tr>--%>
             <%--<tr>--%>
             <%--<td>Phone:</td>--%>
-            <%--<td><c:out value="${employee.phone}" /></td>--%>
+            <%--<td><c:out value="${user.phone}" /></td>--%>
             <%--</tr>--%>
             <%--<tr>--%>
             <%--<td>Address:</td>--%>
-            <%--<td><c:out value="${employee.address}" /></td>--%>
+            <%--<td><c:out value="${user.address}" /></td>--%>
             <%--</tr>--%>
             <%--<tr>--%>
             <%--<td>Email Address:</td>--%>
-            <%--<td><c:out value="${employee.email}" /></td>--%>
+            <%--<td><c:out value="${user.email}" /></td>--%>
             <%--</tr>--%>
             <%--<tr>--%>
             <%--<td>User Name:</td>--%>
-            <%--<td><c:out value="${employee.userName}" /></td>--%>
+            <%--<td><c:out value="${user.userName}" /></td>--%>
             <%--</tr>--%>
             <%--<tr>--%>
             <%--<td>Password:</td>--%>
-            <%--<td><c:out value="${employee.password}" /></td>--%>
+            <%--<td><c:out value="${user.password}" /></td>--%>
             <%--</tr>--%>

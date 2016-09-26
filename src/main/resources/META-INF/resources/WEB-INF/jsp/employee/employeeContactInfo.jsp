@@ -4,35 +4,35 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
-    <title>Employee Time Entry Page</title>
-    <link href="/frontEndFiles/css/employeeContactInfo.css" rel="stylesheet" type="text/css" />
+    <title>User Time Entry Page</title>
+    <link href="/frontEndFiles/css/userContactInfo.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
 <h1>BFE Construction</h1>
 
-<h2>Employee Contact Information Page</h2>
+<h2>User Contact Information Page</h2>
 <br><br>
 <table>
     <tr>
         <td>ID:</td>
-        <td><c:out value="${employee.employeeID}" /></td>
+        <td><c:out value="${user.userID}" /></td>
     </tr>
     <tr>
         <td>First Name:</td>
-        <td><c:out value="${employee.firstName}" /></td>
+        <td><c:out value="${user.firstName}" /></td>
     </tr>
     <tr>
         <td>Last Name:</td>
-        <td><c:out value="${employee.lastName}" /></td>
+        <td><c:out value="${user.lastName}" /></td>
     </tr>
     <tr>
         <td>Phone:</td>
-        <td><c:out value="${employee.phone}" /></td>
+        <td><c:out value="${user.phone}" /></td>
     </tr>
     <tr>
         <td>Address:</td>
-        <td><c:out value="${employee.address}" /></td>
+        <td><c:out value="${user.address}" /></td>
     </tr>
 </table>
 <br><br>

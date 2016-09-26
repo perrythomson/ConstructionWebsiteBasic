@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>View Employee</title>
+    <title>View User</title>
 
 </head>
 <body>
@@ -10,37 +10,37 @@
 <table>
     <tr>
         <td>ID:</td>
-        <td><c:out value="${employee.employeeID}" /></td>
+        <td><c:out value="${user.userID}" /></td>
     </tr>
     <tr>
         <td>First Name:</td>
-        <td><c:out value="${employee.firstName}" /></td>
+        <td><c:out value="${user.firstName}" /></td>
     </tr>
     <tr>
         <td>Last Name:</td>
-        <td><c:out value="${employee.lastName}" /></td>
+        <td><c:out value="${user.lastName}" /></td>
     </tr>
     <tr>
         <td>Phone:</td>
-        <td><c:out value="${employee.phone}" /></td>
+        <td><c:out value="${user.phone}" /></td>
     </tr>
     <tr>
         <td>Address:</td>
-        <td><c:out value="${employee.address}" /></td>
+        <td><c:out value="${user.address}" /></td>
     </tr>
     <tr>
         <td>Salary:</td>
-        <td><c:out value="${employee.salary}" /></td>
+        <td><c:out value="${user.salary}" /></td>
     </tr>
 </table>
 <br><br>
 <ul>
     <li>
         <a href="/">HOME</a>
-        <a href="/addNewEmployee"> Add New Employee </a>
-        <a href="/editEmployee"> Edit Employee </a>
-        <a href="/viewAllEmployees"> View All Employees </a>
-        <a href="/viewEmployee"> View Employee </a>
+        <a href="/addNewUser"> Add New User </a>
+        <a href="/editUser"> Edit User </a>
+        <a href="/viewAllUsers"> View All Users </a>
+        <a href="/viewUser"> View User </a>
     </li>
 </ul>
 

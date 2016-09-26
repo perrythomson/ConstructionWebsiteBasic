@@ -11,13 +11,13 @@
 //
 //
 //@Entity
-//@Table(name = "employee")
-//public class Employee {
+//@Table(name = "user")
+//public class User {
 //
 //
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
-//    private Long employeeID;
+//    private Long userID;
 //
 //    @NotNull  //forces it to be populated
 //    private String email;
@@ -43,11 +43,11 @@
 //
 //    private HashSet<RoleType> roles = new HashSet<RoleType>();
 //
-//    public Employee() {
+//    public User() {
 //    }
 //
-//    public Employee (Long employeeID, String userName, String password, String firstName, String lastName, String email, String phone, String address, double salary) {
-//        this.employeeID = employeeID;
+//    public User (Long userID, String userName, String password, String firstName, String lastName, String email, String phone, String address, double salary) {
+//        this.userID = userID;
 //        this.password = password;
 //        this.userName = userName;
 //        this.firstName = firstName;
@@ -66,11 +66,11 @@
 //        this.roles = roles;
 //    }
 //
-//    public Long getEmployeeID() {
-//        return employeeID;
+//    public Long getUserID() {
+//        return userID;
 //    }
-//    public void setEmployeeID(Long employeeID) {
-//        this.employeeID = employeeID;
+//    public void setUserID(Long userID) {
+//        this.userID = userID;
 //    }
 //
 //    public String getPassword() {

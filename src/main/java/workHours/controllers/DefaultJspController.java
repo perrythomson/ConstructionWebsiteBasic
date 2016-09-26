@@ -50,13 +50,9 @@ public class DefaultJspController {
         if(request.isUserInRole("ADMIN")) {
             return "redirect:/admin/";
         }
-        return "redirect:/employee/";
+        return "redirect:/user/";
     }
 
-    @RequestMapping(value="/addNewUser")
-    public String addUser() {
-        return "addUser";
-    }
 
 
 //    @RequestMapping(value="/logout")

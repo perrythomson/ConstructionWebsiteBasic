@@ -4,7 +4,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
-    <title>List All Employees</title>
+    <title>List All Users</title>
 
     <link href="/frontEndFiles/css/adminHomePage.css" rel="stylesheet" type="text/css" />
 
@@ -201,26 +201,26 @@
         <th> </th>
         <th> Salary</th>
         <th> </th>
-        <th> Delete Employee</th>
+        <th> Delete User</th>
     </tr>
 
-    <c:forEach items="${employees}" var="employee">
+    <c:forEach items="${users}" var="user">
         <tr>
-            <%--<td><a href="/admin/viewEmployee?employeeID=${employee.employeeID}"><c:out value="${employee.employeeID}" /></a></td>--%>
+            <%--<td><a href="/admin/viewUser?userID=${user.userID}"><c:out value="${user.userID}" /></a></td>--%>
             <td align="center"><c:out value="${user.userID}" /></td>
-            <td align="center"><a href="/admin/editEmployee?employeeID=${employee.employeeID}">EDIT</a></td>
+            <td align="center"><a href="/admin/editUser?userID=${user.userID}">EDIT</a></td>
             <td><c:out value="${roleType.roleType}" /></td>
                 <th>  </th>
-            <td><c:out value="${employee.firstName}" /></td>
-            <td><c:out value="${employee.lastName}" /></td>
+            <td><c:out value="${user.firstName}" /></td>
+            <td><c:out value="${user.lastName}" /></td>
                 <th>  </th>
-            <td><c:out value="${employee.phone}" /></td>
+            <td><c:out value="${user.phone}" /></td>
                 <th>  </th>
-                <td><c:out value="${employee.address}" /></td>
+                <td><c:out value="${user.address}" /></td>
                 <th>  </th>
-            <td align="right"><span class="dollars"><c:out value="${employee.salary}" /></span></td>
+            <td align="right"><span class="dollars"><c:out value="${user.salary}" /></span></td>
                 <th>  </th>
-            <td align="center"><a href="/admin/deleteEmployee?id=${employee.employeeID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${employee.employeeID}" /></a></td>
+            <td align="center"><a href="/admin/deleteUser?id=${user.userID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${user.userID}" /></a></td>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </tr>
     </c:forEach>
@@ -244,7 +244,7 @@
 
     <c:forEach items="${jobSeekers}" var="jobSeeker">
         <tr>
-                <%--<td><a href="/admin/viewEmployee?employeeID=${employee.employeeID}"><c:out value="${employee.employeeID}" /></a></td>--%>
+                <%--<td><a href="/admin/viewUser?userID=${user.userID}"><c:out value="${user.userID}" /></a></td>--%>
             <td align="center"><c:out value="${jobSeeker.jobSeekerID}" /></td>
             <th>  </th>
             <td><c:out value="${jobSeeker.name}" /></td>
@@ -255,7 +255,7 @@
             <th>  </th>
             <td><c:out value="${jobSeeker.form}"  /></td>
             <th>  </th>
-            <td align="center"><a href="/admin/deleteJobSeeker?id=${jobSeeker.jobSeekerID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${employee.employeeID}" /></a></td>
+            <td align="center"><a href="/admin/deleteJobSeeker?id=${jobSeeker.jobSeekerID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${user.userID}" /></a></td>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </tr>
     </c:forEach>
@@ -273,7 +273,7 @@
 <ul>
     <li>
         <a href="/"> Home </a>
-        <a href="/admin/addNewEmployee"> Add New Employee </a>
+        <a href="/admin/addNewUser"> Add New User </a>
         <a href="/admin/viewAllPayPeriods"> View All Pay Periods </a>
         <li style="float:right" ><a href="/logout">Log Out</a></li>
     </li>

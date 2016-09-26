@@ -6,9 +6,8 @@
 </head>
 <body>
 <h1>Add New User</h1>
-<form name="newUserForm" method="POST" action="/saveNewUser">
-    <%--TODO would I send it to the default controller or to the Admin controller to method saveNewEmployee would I need to add firstName etc parameters?--%>
-    <%--<form name="newEmployeeForm" method="POST" action="/admin/saveNewEmployee">--%>
+<form name="newUserForm" method="POST" action="/admin/saveNewUser">
+    <%--<form name="newUserForm" method="POST" action="/admin/saveNewUser">--%>
     username: <input type="text" name="username"><br>
     password: <input type="text" name="password"><br>
     email: <input type="text" name="email"><br>

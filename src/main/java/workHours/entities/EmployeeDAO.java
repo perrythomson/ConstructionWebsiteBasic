@@ -9,7 +9,7 @@
 // * Created by perrythomson on 9/2/16.
 // */
 //@Transactional
-//public interface EmployeeDAO extends CrudRepository<Employee, Long> {
-//    Iterable<Employee> findAll();
-////    List<Employee> findByEmployeeID;
+//public interface UserDAO extends CrudRepository<User, Long> {
+//    Iterable<User> findAll();
+////    List<User> findByUserID;
 //}

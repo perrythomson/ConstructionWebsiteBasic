@@ -7,13 +7,13 @@
 
     <title>View All Coworkers</title>
 
-    <link href="/frontEndFiles/css/employeeHomePage.css" rel="stylesheet" type="text/css" />
+    <link href="/frontEndFiles/css/userHomePage.css" rel="stylesheet" type="text/css" />
 
 
 </head>
 <body>
 
-<h1>BFE Construction: View All Employees</h1>
+<h1>BFE Construction: View All Users</h1>
 
 <table>
     <tr>
@@ -29,18 +29,18 @@
         <th> </th>
     </tr>
 
-    <c:forEach items="${employees}" var="employee">
+    <c:forEach items="${users}" var="user">
         <tr>
-                <%--<td><a href="/admin/viewEmployee?employeeID=${employee.employeeID}"><c:out value="${employee.employeeID}" /></a></td>--%>
-            <td align="center"><c:out value="${employee.employeeID}" /></td>
+                <%--<td><a href="/admin/viewUser?userID=${user.userID}"><c:out value="${user.userID}" /></a></td>--%>
+            <td align="center"><c:out value="${user.userID}" /></td>
             <td><c:out value="${roleType.roleType}" /></td>
             <th>  </th>
-            <td><c:out value="${employee.firstName}" /></td>
-            <td><c:out value="${employee.lastName}" /></td>
+            <td><c:out value="${user.firstName}" /></td>
+            <td><c:out value="${user.lastName}" /></td>
             <th>  </th>
-            <td><c:out value="${employee.phone}" /></td>
+            <td><c:out value="${user.phone}" /></td>
             <th>  </th>
-            <td><c:out value="${employee.address}" /></td>
+            <td><c:out value="${user.address}" /></td>
             <th>  </th>
 
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
@@ -52,7 +52,7 @@
 <ul>
     <li>
         <a href="/"> Home </a>
-        <a href="/employee/"> Employee Home Page </a>
+        <a href="/user/"> User Home Page </a>
         <a href="/admin/viewAllPayPeriods"> View All Pay Periods </a>
     <li style="float:right" ><a href="/logout">Log Out</a></li>
     </li>

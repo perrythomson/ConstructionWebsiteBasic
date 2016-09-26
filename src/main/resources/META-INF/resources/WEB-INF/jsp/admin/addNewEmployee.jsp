@@ -7,15 +7,15 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
 
-    <title>Add New Employee</title>
+    <title>Add New User</title>
 
     <link href="/frontEndFiles/css/adminHomePage.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
-<h1>ADMIN:  Add Employee</h1>
+<h1>ADMIN:  Add User</h1>
 
-<form name="newEmployeeForm" method="POST" action="/admin/saveNewEmployee"> <!-- post information is readable get information is hidden !-->
+<form name="newUserForm" method="POST" action="/admin/saveNewUser"> <!-- post information is readable get information is hidden !-->
         Role Type: <select name="roleType">
             <c:forEach var="roleType" items="${roleTypes}">
             <option value="<c:out value="${roleType}"/>"><c:out value="${roleType}"/></option></c:forEach>
