@@ -1,4 +1,4 @@
-h1 {
+h1, ul {
     background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");
     border: 2px solid #949599;
     height: 35px;
@@ -7,12 +7,33 @@ h1 {
     padding: 5px;
     color: white;
     font-family: "Times New Roman";
-    text-decoration: none;
+    text-decoration: none;  /* no underline */
 }
+
+ul {
+    bottom: 0px;
+    position: fixed;
+    width: calc(100% - 40px);
+    list-style-type: none;  /* gets rid of the bullet */
+}
+
+th {
+    border: 2px solid #949599;
+    background-color: greenyellow;
+    height: 25px;
+    width: calc(50% - 24px);
+    margin: 5px;
+    padding: 5px;
+    color: Black;
+    font-family: "Times New Roman";
+    text-decoration: none;  /* no underline */
+    font-variant-caps: normal;
+}
+
 table {
     float:  left;}
 
-table, tr, th {list-style-type: none;
+table, tr {list-style-type: none;
     margin: 5px;
     padding: 2px;
     overflow: hidden;
@@ -22,25 +43,17 @@ table, tr, th {list-style-type: none;
 }
 
 
-
-ul {
-    background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");
-    position: fixed;
-    bottom: 0;
-    width: calc(100% - 24px);%;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    border: 1px solid #555;
-    font-variant-caps: small-caps;
-}
-
-li a {
+li a.two {
     display: block;
     width: auto;
     opacity: 0.5;
     background-color: black;
     color: white;
+    padding: 8px;
+    display: inline;
+    float: left;
+    font-variant-caps: small-caps;
+    text-decoration: none;
 }
 
 li a:hover {
@@ -51,20 +64,12 @@ li a:hover {
     color: white;
 }
 
-
-li, a {
-    /*align-content: space-between;*/
-    /*position: absolute;*/
-    padding: 8px;
-    display: inline;
-    float: left;
-    /*bottom: 0;*/
-    /*left: 0;*/
-}
-
-
 form {
     margin: 5px;
+    position: absolute;
+    right: 8px;
+    left: auto;
+    top: 60px;
     padding: 2px;
     overflow: hidden;
     border: 1px solid #ccc;
@@ -73,4 +78,44 @@ form {
 }
 
 
-/*below here is calendar code*/
+/*li a {*/
+    /*display: block;*/
+    /*width: auto;*/
+    /*opacity: 0.5;*/
+    /*background-color: black;*/
+    /*color: white;*/
+/*}*/
+
+
+/*li, a {*/
+    /*!*align-content: space-between;*!*/
+    /*!*position: absolute;*!*/
+    /*padding: 8px;*/
+    /*display: inline;*/
+    /*float: left;*/
+    /*!*bottom: 0;*!*/
+    /*!*left: 0;*!*/
+/*}*/
+
+/*h1 {*/
+    /*background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");*/
+    /*border: 2px solid #949599;*/
+    /*height: 35px;*/
+    /*width: calc(100% - 24px);*/
+    /*margin: 5px;*/
+    /*padding: 5px;*/
+    /*color: white;*/
+    /*font-family: "Times New Roman";*/
+    /*text-decoration: none;*/
+/*}*/
+/*ul {*/
+    /*background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");*/
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*width: calc(100% - 24px);%;*/
+    /*list-style-type: none;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*border: 1px solid #555;*/
+    /*font-variant-caps: small-caps;*/
+/*}*/

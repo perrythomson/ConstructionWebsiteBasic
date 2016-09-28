@@ -39,10 +39,6 @@ public class AdminController {
     private final UserRoleDAO userRoleDAO;
     private final InterestedPartyDAO interestedPartyDAO;
 
-//    private final UserDAO userDAO;
-//    private final UserRoleDAO userRoleDAO;
-//    private final PasswordEncoder passwordEncoder;
-
 
     public AdminController(InterestedPartyDAO interestedPartyDAO, UserRoleDAO userRoleDAO, PasswordEncoder passwordEncoder, AdminDAO adminDAO, JobSeekerDAO jobSeekerDAO, TimeSheetTrackerDAO timeSheetTrackerDAO, UserDAO userDAO) {
         Assert.notNull(userDAO, "UserDAO must not be null!");
@@ -110,6 +106,8 @@ public class AdminController {
         userRole.setUserid(user.getUserId());
         userRole.setRole("USER");
         userRoleDAO.save(userRole);
+//        model.addAttribute("roleTypes", RoleType.values());
+
         return new RedirectView("/admin/");
     }
 

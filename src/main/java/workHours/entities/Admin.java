@@ -46,6 +46,8 @@ public class Admin {
         this.address = address;
         this.email = email;
         this.salary = salary;
+//        roles.add(RoleType.USER);
+        //TODO figure out roles
         roles.add(RoleType.EMPLOYEE);
     }
 

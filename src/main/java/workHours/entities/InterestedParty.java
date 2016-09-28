@@ -11,7 +11,7 @@ public class InterestedParty {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long contactUsID;
 
-    @NotNull
+
     private String email;
 
     @NotNull
@@ -23,7 +23,7 @@ public class InterestedParty {
     @NotNull
     private String form;
 
-    @NotNull
+
     private String location;
 
 

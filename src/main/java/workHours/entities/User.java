@@ -3,6 +3,7 @@ package workHours.entities;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.HashSet;
 
 @Entity
 @Table(name = "users")
@@ -34,6 +35,8 @@ public class User implements Serializable {
 
     private double salary;
 
+    private HashSet<RoleType> roles = new HashSet<RoleType>();
+
     public User() {
 
     }
@@ -46,11 +49,18 @@ public class User implements Serializable {
         this.enabled = user.getEnabled();
     }
 
-    public User(String userName, String password, int enabled, String email) {
+    public User(String userName, String password, int enabled, String email) {  //, String firstName, String lastName, String phone, String address, double salary
         this.userName = userName;
         this.password = password;
         this.enabled = enabled;
         this.email = email;
+        //TODO this errors out when I add this here...where is the correct place?
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.phone = phone;
+//        this.address = address;
+//        this.salary = salary;
+//        roles.add(RoleType.EMPLOYEE);
     }
 
     public static long getSerialVersionUID() {
@@ -135,5 +145,13 @@ public class User implements Serializable {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public HashSet<RoleType> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(HashSet<RoleType> roles) {
+        this.roles = roles;
     }
 }

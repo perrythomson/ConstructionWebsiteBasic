@@ -187,6 +187,7 @@
 <h1>ADMIN:  HOME PAGE</h1>
 
 <table>
+    <th>Employees</th>
     <tr>
         <th> Emp-ID </th>
         <th> Edit-Emp </th>
@@ -207,8 +208,8 @@
     <c:forEach items="${users}" var="user">
         <tr>
             <%--<td><a href="/admin/viewUser?userID=${user.userID}"><c:out value="${user.userID}" /></a></td>--%>
-            <td align="center"><c:out value="${user.userID}" /></td>
-            <td align="center"><a href="/admin/editUser?userID=${user.userID}">EDIT</a></td>
+            <td align="center"><c:out value="${user.userId}" /></td>
+            <td align="center"><a href="/admin/editUser?userId=${user.userId}">EDIT</a></td>
             <td><c:out value="${roleType.roleType}" /></td>
                 <th>  </th>
             <td><c:out value="${user.firstName}" /></td>
@@ -216,18 +217,21 @@
                 <th>  </th>
             <td><c:out value="${user.phone}" /></td>
                 <th>  </th>
-                <td><c:out value="${user.address}" /></td>
+            <td><c:out value="${user.address}" /></td>
                 <th>  </th>
             <td align="right"><span class="dollars"><c:out value="${user.salary}" /></span></td>
                 <th>  </th>
-            <td align="center"><a href="/admin/deleteUser?id=${user.userID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${user.userID}" /></a></td>
+            <td align="center"><a href="/admin/deleteUser?id=${user.userId}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${user.userId}" /></a></td>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </tr>
     </c:forEach>
 </table>
 
-
+<br>
+<br>
+<br>
 <table>
+    <th>Applicants</th>
     <tr>
         <th> Job Seeker ID </th>
         <th> </th>
@@ -255,11 +259,54 @@
             <th>  </th>
             <td><c:out value="${jobSeeker.form}"  /></td>
             <th>  </th>
-            <td align="center"><a href="/admin/deleteJobSeeker?id=${jobSeeker.jobSeekerID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${user.userID}" /></a></td>
+            <td align="center"><a href="/admin/deleteJobSeeker?id=${jobSeeker.jobSeekerID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${user.userId}" /></a></td>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </tr>
     </c:forEach>
 </table>
+
+
+<br>
+<br>
+<br>
+<table>
+    <th>Construction Bids</th>
+    <tr>
+        <th> Interested Party ID </th>
+        <th> </th>
+        <th> Name </th>
+        <th> </th>
+        <th> Phone </th>
+        <th> </th>
+        <th> Email </th>
+        <th> </th>
+        <th> Job History </th>
+        <th> </th>
+        <th> Delete Inquiry</th>
+    </tr>
+
+    <c:forEach items="${contactUss}" var="contactUs">
+        <tr>
+                <%--<td><a href="/admin/viewUser?userID=${user.userID}"><c:out value="${user.userID}" /></a></td>--%>
+            <td align="center"><c:out value="${contactUs.contactUsID}" /></td>
+            <th>  </th>
+            <td><c:out value="${contactUs.name}" /></td>
+            <th>  </th>
+            <td><c:out value="${contactUs.phone}" /></td>
+            <th>  </th>
+            <td><c:out value="${contactUs.email}" /></td>
+            <th>  </th>
+            <td><c:out value="${contactUs.form}"  /></td>
+            <th>  </th>
+            <td align="center"><a href="/admin/deleteContactUs?id=${contactUs.contactUsID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${user.userId}" /></a></td>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        </tr>
+    </c:forEach>
+</table>
+<br>
+<br>
+<br>
+
 <script type="text/javascript">writeCalendar()</script>
 
 <%--<p><center>--%>
@@ -272,10 +319,11 @@
 <br>
 <ul>
     <li>
-        <a href="/"> Home </a>
-        <a href="/admin/addNewUser"> Add New User </a>
-        <a href="/admin/viewAllPayPeriods"> View All Pay Periods </a>
-        <li style="float:right" ><a href="/logout">Log Out</a></li>
+        <a class="two" href="/"> Home </a>
+        <a class="two" href="/admin/addNewUser"> Add New User </a>
+        <a class="two" href="/admin/viewAllUsers"> View All Users </a>
+        <a class="two" href="/admin/viewAllPayPeriods"> View All Pay Periods </a>
+        <li style="float:right" ><a class="two" href="/logout">Log Out</a></li>
     </li>
 </ul>
 

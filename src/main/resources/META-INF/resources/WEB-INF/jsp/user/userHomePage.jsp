@@ -29,7 +29,7 @@
 
     <c:forEach items="${users}" var="user">
         <tr>
-            <a href="/user/editUserContactInfo?userID=${user.userId}">Edit</a>
+            <a href="/user/editUserContactInfo?userId=${user.userId}">Edit</a>
             <td><c:out value="${roleType.roleType}" /></td>
             <th>  </th>
             <td><c:out value="${user.firstName}" /></td>

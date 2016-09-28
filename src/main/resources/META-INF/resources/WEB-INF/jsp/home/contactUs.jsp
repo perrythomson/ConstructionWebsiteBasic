@@ -11,11 +11,10 @@
 <body>
 <h1>BFE Construction:  Contact Us</h1>
 
-
-<div class="brad">
-    <div>
-        <image class="head_shot" src="/frontEndFiles/pictures/Brad_Head_Shot.jpg" ></image>
-    </div>
+<div>
+    <image class="head_shot" src="/frontEndFiles/pictures/Brad_Head_Shot.jpg" ></image>
+</div>
+<div>
     <p>  Hi, I'm Brad Evans and I'm the owner and operator of Built For Eternity construction.
     We pride ourselves on providing the highest quality product for the lowest cost. If you are interested in our services and would like an estimate
 on your project, please fill out the form below and I will personally get back with you.</p>

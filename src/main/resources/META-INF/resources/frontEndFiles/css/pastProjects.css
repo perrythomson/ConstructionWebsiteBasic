@@ -29,7 +29,7 @@ h1, ul {
     padding: 5px;
     color: white;
     font-family: "Times New Roman";
-    text-decoration: none;
+    text-decoration: none;  /* no underline */
 }
 
 ul {
@@ -48,39 +48,7 @@ body  {
     background-size: 100% 100%;.
 }
 
-/*table {*/
-    /*float:  left;}*/
 
-/*table, tr, th {list-style-type: none;*/
-    /*margin: 5px;*/
-    /*padding: 2px;*/
-    /*overflow: hidden;*/
-    /*border: 1px solid #ccc;*/
-    /*background-color: #f1f1f1;*/
-    /*border-bottom: 1px solid #ddd;*/
-/*}*/
-
-
-
-/*ul {*/
-    /*background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");*/
-    /*position: fixed;*/
-    /*bottom: 0;*/
-    /*width: calc(100% - 24px);%;*/
-    /*list-style-type: none;*/
-    /*margin: 0;*/
-    /*padding: 0;*/
-    /*border: 1px solid #555;*/
-    /*font-variant-caps: small-caps;*/
-/*}*/
-
-/*li a {*/
-    /*display: block;*/
-    /*width: auto;*/
-    /*opacity: 0.5;*/
-    /*background-color: black;*/
-    /*color: white;*/
-/*}*/
 
 li a.two {
     display: block;
@@ -103,6 +71,39 @@ li a:hover {
     color: white;
 }
 
+/*table {*/
+/*float:  left;}*/
+
+/*table, tr, th {list-style-type: none;*/
+/*margin: 5px;*/
+/*padding: 2px;*/
+/*overflow: hidden;*/
+/*border: 1px solid #ccc;*/
+/*background-color: #f1f1f1;*/
+/*border-bottom: 1px solid #ddd;*/
+/*}*/
+
+
+
+/*ul {*/
+/*background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");*/
+/*position: fixed;*/
+/*bottom: 0;*/
+/*width: calc(100% - 24px);%;*/
+/*list-style-type: none;*/
+/*margin: 0;*/
+/*padding: 0;*/
+/*border: 1px solid #555;*/
+/*font-variant-caps: small-caps;*/
+/*}*/
+
+/*li a {*/
+/*display: block;*/
+/*width: auto;*/
+/*opacity: 0.5;*/
+/*background-color: black;*/
+/*color: white;*/
+/*}*/
 
 /*li, a {*/
     /*!*align-content: space-between;*!*/

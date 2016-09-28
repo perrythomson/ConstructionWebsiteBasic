@@ -3,14 +3,14 @@
 <html>
 <head>
     <title>Edit User Contact Information</title>
-
+    <link href="/frontEndFiles/css/editUser.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 Edit User Contact Information
 
 <br><br>
 <form name="updateUserContactInfoForm" method="POST" action="/user/">
-    User ID: <input type="text" name="userID" value="<c:out value="${user.userId}" />" readonly /><br>
+    User ID: <input type="text" name="userId" value="<c:out value="${user.userId}" />" readonly /><br>
     First Name: <input type="text" name="firstName" value="<c:out value="${user.firstName}" />" /><br>
     Last Name: <input type="text" name="lastName" value="<c:out value="${user.lastName}" />" /><br>
     Phone: <input type="text" name="phone" value="<c:out value="${user.phone}" />" /><br>
