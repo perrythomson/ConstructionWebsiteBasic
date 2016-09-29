@@ -20,7 +20,7 @@
 on your project, please fill out the form below and I will personally get back with you.</p>
 </div>
 
-<div><form name = "contactUs" method="POST" action="/home/interestedParty">
+<div><form name = "contactUsForm" method="POST" action="/home/interestedParty">
     <h2> ~ Contact Us ~ </h2> <br/>
     Email:      <input type="text" name="email"   value="${email}">    <br/><br/>
     Name:       <input type="text" name="name"    value="${name}">     <br/><br/>

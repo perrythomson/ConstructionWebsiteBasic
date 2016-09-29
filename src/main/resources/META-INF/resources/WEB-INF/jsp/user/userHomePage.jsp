@@ -13,6 +13,7 @@
 <h1>BFE Construction: User Home Page</h1>
 <table>
     <tr>
+        <th> User ID </th>
         <th> Edit-Emp </th>
         <th> Role </th>
         <th> </th>
@@ -29,6 +30,7 @@
 
     <c:forEach items="${users}" var="user">
         <tr>
+            <td align="center"><c:out value="${user.userId}" /></td>
             <a href="/user/editUserContactInfo?userId=${user.userId}">Edit</a>
             <td><c:out value="${roleType.roleType}" /></td>
             <th>  </th>

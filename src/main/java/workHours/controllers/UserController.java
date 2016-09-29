@@ -35,6 +35,8 @@ public class UserController {
         return "user/userHomePage";
     }
     //TODO This method prevents userHomePage from working error 500
+    //    TODO get session username and request information from that
+
 //    @RequestMapping(value="/")
 //    public String userHomePage(String userId, ModelMap model) {
 //        User user = userDAO.findOne(Long.valueOf(userId));  //this is going to have username/password info rather than find by empID

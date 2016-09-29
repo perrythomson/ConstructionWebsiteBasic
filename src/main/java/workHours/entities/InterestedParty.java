@@ -5,11 +5,11 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "contactUs")
+@Table(name = "interestedParty")
 public class InterestedParty {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long contactUsID;
+    private Long interestedPartyID;
 
 
     private String email;
@@ -35,12 +35,12 @@ public class InterestedParty {
         this.location = location;
     }
 
-    public Long getContactUsID() {
-        return contactUsID;
+    public Long getInterestedPartyID() {
+        return interestedPartyID;
     }
 
-    public void setContactUsID(Long contactUsID) {
-        this.contactUsID = contactUsID;
+    public void setInterestedPartyID(Long interestedPartyID) {
+        this.interestedPartyID = interestedPartyID;
     }
 
     public String getEmail() {

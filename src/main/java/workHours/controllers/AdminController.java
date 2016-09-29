@@ -24,6 +24,7 @@ import workHours.entities.JobSeeker;
 import workHours.entities.JobSeekerDAO;
 import workHours.entities.AdminDAO;
 import workHours.entities.RoleType;
+import workHours.entities.InterestedParty;
 import workHours.entities.InterestedPartyDAO;
 
 
@@ -65,12 +66,13 @@ public class AdminController {
 
         Iterable<JobSeeker> jobSeekers = jobSeekerDAO.findAll();  //pulling information to the same home page need logic for all db objects
         model.addAttribute("jobSeekers", jobSeekers);
+//        return "admin/adminHomePage"; //anything after the return statement makes it unreachable
+
+        Iterable<InterestedParty> interestedParties = interestedPartyDAO.findAll();
+        model.addAttribute("interestedParties", interestedParties);
+
+
         return "admin/adminHomePage";
-
-
-//        Iterable<InterestedParty> contactUss = contactUsDAO.findAll();
-//        model.addAttribute("contactUss", contactUss);
-//        return "admin/adminHomePage";
     }
 
 //    @RequestMapping(value="addNewUser")
@@ -80,18 +82,21 @@ public class AdminController {
 //        return "admin/addNewUser";
 //    }
 
+
+    @RequestMapping(value="viewAllUsers")
+    public String allEmployees(ModelMap model) {
+        Iterable<User> users = userDAO.findAll();
+        model.addAttribute("users",users);
+        model.addAttribute("roleTypes", RoleType.values());
+        return "admin/viewAllUsers";
+    }
+
     @RequestMapping(value="deleteUser")
     public View deleteUser(Long id) {                       //this method is to delete question
         User user = userDAO.findOne(id);
         userDAO.delete(user);  //going to the dao, deleting that particular question
         return new RedirectView("/admin/");
     }
-
-//    @RequestMapping(value="saveNewUser")
-//    public View saveNewUser(User user) {
-//        userDAO.save(user);
-//        return new RedirectView("/admin/");
-//    }
 
     @RequestMapping(value="addNewUser")
     public String addUser() {
@@ -128,92 +133,92 @@ public class AdminController {
         return new RedirectView("/admin/");
     }
 
-    @RequestMapping("uploadUsers")
-    public String uploadUsers() {       //passing string on to a jsp to view
-        return "admin/uploadUsers";
-    }
-
-    @RequestMapping("saveUploadedUsers")
-    public View saveUploadedUsers(MultipartFile UsersFile) {
-        String returnView = "";
-        if (!UsersFile.isEmpty()) {
-            try {
-                String pathString = "/Users/perrythomson/UPLOADS_Capstone_Users/";
-                Files.write(Paths.get(pathString+UsersFile.getOriginalFilename()),UsersFile.getBytes());
-                System.out.println("-------- File Upload Successful");
-                addUploadToDatabase(pathString+UsersFile.getOriginalFilename()); //passing the file location which need to be the same as 2 lines above
-            } catch (IOException | RuntimeException e) {                    //two exceptions at once J8 short code
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("-------- File Is EMPTY!");
-        }
-        return new RedirectView("/admin/");
-    }
-
-    private void addUploadToDatabase(String filePath) {
-        try {
-            Path userUploadedFilePath = Paths.get(filePath);
-            ObjectMapper mapper = new ObjectMapper();  //map json to entities
-            List<User> uploadedUsers = mapper.readValue(Files.newInputStream(userUploadedFilePath), new TypeReference<List<User>>(){});
-            for(User uploadedUser : uploadedUsers) {  //creating new id's so that it doesn't barf and error
-                User user = new User();
-                user.setFirstName(uploadedUser.getFirstName());
-                user.setLastName(uploadedUser.getLastName());
-                user.setPhone(uploadedUser.getPhone());
-                user.setAddress(uploadedUser.getAddress());
-                user.setSalary(uploadedUser.getSalary());
-                userDAO.save(user);
-            }
-        } catch (IOException ioe) {
-            System.out.println("Issue reading List from JSON file");
-            ioe.printStackTrace();
-        }
-    }
-
-    @RequestMapping("uploadTimeSheet")         //jsp needs to be created TODO
-    public String uploadTimeSheet() {       //passing string on to a jsp to view
-        return "admin/viewAllTimeSheets";
-    }
-
-    @RequestMapping("saveUploadedTimeSheet")
-    public View saveUploadedTimeSheet(MultipartFile TimeSheetsFile) {
-        String returnView = "";
-        if (!TimeSheetsFile.isEmpty()) {
-            try {//(below) get current file name...get contents
-                String pathString = "/Users/perrythomson/UPLOADS_Capstone_TimeSheets/"; //TODO create string for the try statement
-                Files.write(Paths.get(pathString+TimeSheetsFile.getOriginalFilename()),TimeSheetsFile.getBytes());
-                System.out.println("-------- File Upload Successful");
-                addUploadTimeSheetToDatabase(pathString+TimeSheetsFile.getOriginalFilename()); //passing the file location which need to be the same as 2 lines above
-            } catch (IOException | RuntimeException e) {                    //two exceptions at once J8 short code
-                e.printStackTrace();
-            }
-        } else {
-            System.out.println("-------- File Is EMPTY!");
-        }
-        return new RedirectView("/admin/");
-    }
-
-    private void addUploadTimeSheetToDatabase(String filePath) {
-        try {
-            Path timeSheetUploadedFilePath = Paths.get(filePath);
-            ObjectMapper mapper = new ObjectMapper();  //map json to entities
-            List<TimeSheetTracker> uploadedUserTimeSheets = mapper.readValue(Files.newInputStream(timeSheetUploadedFilePath), new TypeReference<List<TimeSheetTracker>>(){});
-            for(TimeSheetTracker uploadedUserTimeSheet : uploadedUserTimeSheets) {  //creating new id's so that it doesn't barf and error
-                TimeSheetTracker timeSheetTracker = new TimeSheetTracker();
-                timeSheetTracker.setStartTime(uploadedUserTimeSheet.getStartTime());
-                timeSheetTracker.setEndTime(uploadedUserTimeSheet.getEndTime());
-                timeSheetTracker.setLunchStart(uploadedUserTimeSheet.getLunchStart());
-                timeSheetTracker.setLunchEnd(uploadedUserTimeSheet.getLunchEnd());
-                timeSheetTracker.setTask(uploadedUserTimeSheet.getTask());
-                timeSheetTracker.setTotalDayHours(uploadedUserTimeSheet.getTotalDayHours());
-                timeSheetTrackerDAO.save(timeSheetTracker);
-            }
-        } catch (IOException ioe) {
-            System.out.println("Issue reading List from JSON file");
-            ioe.printStackTrace();
-        }
-    }
+//    @RequestMapping("uploadUsers")
+//    public String uploadUsers() {       //passing string on to a jsp to view
+//        return "admin/uploadUsers";
+//    }
+//
+//    @RequestMapping("saveUploadedUsers")
+//    public View saveUploadedUsers(MultipartFile UsersFile) {
+//        String returnView = "";
+//        if (!UsersFile.isEmpty()) {
+//            try {
+//                String pathString = "/Users/perrythomson/UPLOADS_Capstone_Users/";
+//                Files.write(Paths.get(pathString+UsersFile.getOriginalFilename()),UsersFile.getBytes());
+//                System.out.println("-------- File Upload Successful");
+//                addUploadToDatabase(pathString+UsersFile.getOriginalFilename()); //passing the file location which need to be the same as 2 lines above
+//            } catch (IOException | RuntimeException e) {                    //two exceptions at once J8 short code
+//                e.printStackTrace();
+//            }
+//        } else {
+//            System.out.println("-------- File Is EMPTY!");
+//        }
+//        return new RedirectView("/admin/");
+//    }
+//
+//    private void addUploadToDatabase(String filePath) {
+//        try {
+//            Path userUploadedFilePath = Paths.get(filePath);
+//            ObjectMapper mapper = new ObjectMapper();  //map json to entities
+//            List<User> uploadedUsers = mapper.readValue(Files.newInputStream(userUploadedFilePath), new TypeReference<List<User>>(){});
+//            for(User uploadedUser : uploadedUsers) {  //creating new id's so that it doesn't barf and error
+//                User user = new User();
+//                user.setFirstName(uploadedUser.getFirstName());
+//                user.setLastName(uploadedUser.getLastName());
+//                user.setPhone(uploadedUser.getPhone());
+//                user.setAddress(uploadedUser.getAddress());
+//                user.setSalary(uploadedUser.getSalary());
+//                userDAO.save(user);
+//            }
+//        } catch (IOException ioe) {
+//            System.out.println("Issue reading List from JSON file");
+//            ioe.printStackTrace();
+//        }
+//    }
+//
+//    @RequestMapping("uploadTimeSheet")         //jsp needs to be created TODO
+//    public String uploadTimeSheet() {       //passing string on to a jsp to view
+//        return "admin/viewAllTimeSheets";
+//    }
+//
+//    @RequestMapping("saveUploadedTimeSheet")
+//    public View saveUploadedTimeSheet(MultipartFile TimeSheetsFile) {
+//        String returnView = "";
+//        if (!TimeSheetsFile.isEmpty()) {
+//            try {//(below) get current file name...get contents
+//                String pathString = "/Users/perrythomson/UPLOADS_Capstone_TimeSheets/"; //TODO create string for the try statement
+//                Files.write(Paths.get(pathString+TimeSheetsFile.getOriginalFilename()),TimeSheetsFile.getBytes());
+//                System.out.println("-------- File Upload Successful");
+//                addUploadTimeSheetToDatabase(pathString+TimeSheetsFile.getOriginalFilename()); //passing the file location which need to be the same as 2 lines above
+//            } catch (IOException | RuntimeException e) {                    //two exceptions at once J8 short code
+//                e.printStackTrace();
+//            }
+//        } else {
+//            System.out.println("-------- File Is EMPTY!");
+//        }
+//        return new RedirectView("/admin/");
+//    }
+//
+//    private void addUploadTimeSheetToDatabase(String filePath) {
+//        try {
+//            Path timeSheetUploadedFilePath = Paths.get(filePath);
+//            ObjectMapper mapper = new ObjectMapper();  //map json to entities
+//            List<TimeSheetTracker> uploadedUserTimeSheets = mapper.readValue(Files.newInputStream(timeSheetUploadedFilePath), new TypeReference<List<TimeSheetTracker>>(){});
+//            for(TimeSheetTracker uploadedUserTimeSheet : uploadedUserTimeSheets) {  //creating new id's so that it doesn't barf and error
+//                TimeSheetTracker timeSheetTracker = new TimeSheetTracker();
+//                timeSheetTracker.setStartTime(uploadedUserTimeSheet.getStartTime());
+//                timeSheetTracker.setEndTime(uploadedUserTimeSheet.getEndTime());
+//                timeSheetTracker.setLunchStart(uploadedUserTimeSheet.getLunchStart());
+//                timeSheetTracker.setLunchEnd(uploadedUserTimeSheet.getLunchEnd());
+//                timeSheetTracker.setTask(uploadedUserTimeSheet.getTask());
+//                timeSheetTracker.setTotalDayHours(uploadedUserTimeSheet.getTotalDayHours());
+//                timeSheetTrackerDAO.save(timeSheetTracker);
+//            }
+//        } catch (IOException ioe) {
+//            System.out.println("Issue reading List from JSON file");
+//            ioe.printStackTrace();
+//        }
+//    }
 
 
 }

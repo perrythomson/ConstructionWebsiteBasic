@@ -22,6 +22,7 @@
     Last Name: <input type="text" name="lastName" value="<c:out value="${user.lastName}" />" /><br>
     Phone: <input type="text" name="phone" value="<c:out value="${user.phone}" />" /><br>
     Address: <input type="text" name="address" value="<c:out value="${user.address}" />" /><br>
+    Email: <input type="text" name="email" value="<c:out value="${user.email}" />" /><br>
     Salary: <input type="text" name="salary" value="<c:out value="${user.salary}" />" /><br><br><br>
     User Name:  <input type="text" name="userName" autofocus required value="<c:out value="${user.userName}"/>" /><br>
     Password:   <input type="password" name="password" required value="<c:out value="${user.password}"/>" /> <br>

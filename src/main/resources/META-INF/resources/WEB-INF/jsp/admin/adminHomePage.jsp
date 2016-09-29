@@ -186,7 +186,8 @@
 
 <h1>ADMIN:  HOME PAGE</h1>
 
-<table>
+<div class="parentAdminTables">
+<div class="adminTables" ><table>
     <th>Employees</th>
     <tr>
         <th> Emp-ID </th>
@@ -225,12 +226,9 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </tr>
     </c:forEach>
-</table>
+</table></div>
 
-<br>
-<br>
-<br>
-<table>
+<div class="adminTables"><table>
     <th>Applicants</th>
     <tr>
         <th> Job Seeker ID </th>
@@ -263,13 +261,9 @@
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </tr>
     </c:forEach>
-</table>
+</table></div>
 
-
-<br>
-<br>
-<br>
-<table>
+<div class="adminTables"><table>
     <th>Construction Bids</th>
     <tr>
         <th> Interested Party ID </th>
@@ -285,27 +279,27 @@
         <th> Delete Inquiry</th>
     </tr>
 
-    <c:forEach items="${contactUss}" var="contactUs">
+    <c:forEach items="${interestedParties}" var="interestedParty">
         <tr>
                 <%--<td><a href="/admin/viewUser?userID=${user.userID}"><c:out value="${user.userID}" /></a></td>--%>
-            <td align="center"><c:out value="${contactUs.contactUsID}" /></td>
+            <td align="center"><c:out value="${interestedParty.interestedPartyID}" /></td>
             <th>  </th>
-            <td><c:out value="${contactUs.name}" /></td>
+            <td><c:out value="${interestedParty.name}" /></td>
             <th>  </th>
-            <td><c:out value="${contactUs.phone}" /></td>
+            <td><c:out value="${interestedParty.phone}" /></td>
             <th>  </th>
-            <td><c:out value="${contactUs.email}" /></td>
+            <td><c:out value="${interestedParty.email}" /></td>
             <th>  </th>
-            <td><c:out value="${contactUs.form}"  /></td>
+            <td><c:out value="${interestedParty.form}"  /></td>
             <th>  </th>
-            <td align="center"><a href="/admin/deleteContactUs?id=${contactUs.contactUsID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${user.userId}" /></a></td>
+            <td align="center"><a href="/admin/deleteInterestedParty?id=${interestedParty.interestedPartyID}" onclick="return confirm('Are you sure?')" >DELETE: <c:out value="${user.userId}" /></a></td>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </tr>
     </c:forEach>
-</table>
+</table></div>
+</div>
 <br>
-<br>
-<br>
+
 
 <script type="text/javascript">writeCalendar()</script>
 

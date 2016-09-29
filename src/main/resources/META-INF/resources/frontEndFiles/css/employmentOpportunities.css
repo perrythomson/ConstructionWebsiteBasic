@@ -51,7 +51,7 @@ body  {
 form {
     margin-right: auto;
     margin-left: auto;
-    padding: 2px;
+    padding: 5px;
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
@@ -95,7 +95,7 @@ li a:hover {
 
 p {
     margin: 5px;
-    padding: 2px;
+    padding: 5px;
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
