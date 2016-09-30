@@ -20,13 +20,16 @@ import javax.servlet.http.HttpServletRequest;
 public class UserController {
 
     private final UserDAO userDAO;
+    private final RoleTypeDAO roleTypeDAO;
     private final TimeSheetTrackerDAO timeSheetTrackerDAO;
 
     @Autowired
-    public UserController(UserDAO userDAO, TimeSheetTrackerDAO timeSheetTrackerDAO) {
+    public UserController(RoleTypeDAO roleTypeDAO, UserDAO userDAO, TimeSheetTrackerDAO timeSheetTrackerDAO) {
         Assert.notNull(userDAO, "UserDAO must not be null!");
         Assert.notNull(timeSheetTrackerDAO, "TimeSheetTrackerDAO must not be null!");
+        Assert.notNull(roleTypeDAO, "RoleTypeDAO must not be null!");
 
+        this.roleTypeDAO = roleTypeDAO;
         this.userDAO = userDAO;
         this.timeSheetTrackerDAO = timeSheetTrackerDAO;
     }
@@ -52,7 +55,9 @@ public class UserController {
     public String allUsers(ModelMap model) {
         Iterable<User> users = userDAO.findAll();
         model.addAttribute("users", users);
-        model.addAttribute("roleTypes", RoleType.values());
+
+        Iterable<RoleType> roleTypes = roleTypeDAO.findAll();
+        model.addAttribute("roleTypes", roleTypes);
 
         return "user/viewAllCoworkers";
     }
@@ -65,11 +70,14 @@ public class UserController {
 
 
     @RequestMapping(value="editUserContactInfo")
-    public String editUser(String userId,ModelMap model) {
+    public String editUser(String RoleT, String userId,ModelMap model) {
 //        System.out.println("User ID is: " + userId);
         User user = userDAO.findOne(Long.valueOf(userId));  //changes string empID to long
         model.addAttribute("user",user);
-        model.addAttribute("roleTypes", RoleType.values());
+
+
+        RoleType roleType = roleTypeDAO.findOne(Long.valueOf(RoleT));
+        model.addAttribute("roleType", roleType);
 //        Admin admin = adminDAO.findOne(userId);
 //        adminModel.addAttribute("admin",admin);
 //        return "/admin/editUser";
