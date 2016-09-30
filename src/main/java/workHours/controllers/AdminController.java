@@ -26,7 +26,7 @@ import workHours.entities.JobSeeker;
 import workHours.entities.JobSeekerDAO;
 import workHours.entities.AdminDAO;
 import workHours.entities.RoleType;
-import workHours.entities.RoleTypeDAO;
+//import workHours.entities.RoleTypeDAO;
 import workHours.entities.InterestedParty;
 import workHours.entities.InterestedPartyDAO;
 
@@ -42,10 +42,9 @@ import workHours.entities.InterestedPartyDAO;
         private final PasswordEncoder passwordEncoder;
         private final UserRoleDAO userRoleDAO;
         private final InterestedPartyDAO interestedPartyDAO;
-        private final RoleTypeDAO roleTypeDAO;
 
 
-        public AdminController(RoleTypeDAO roleTypeDAO, InterestedPartyDAO interestedPartyDAO, UserRoleDAO userRoleDAO, PasswordEncoder passwordEncoder, AdminDAO adminDAO, JobSeekerDAO jobSeekerDAO, TimeSheetTrackerDAO timeSheetTrackerDAO, UserDAO userDAO) {
+        public AdminController( InterestedPartyDAO interestedPartyDAO, UserRoleDAO userRoleDAO, PasswordEncoder passwordEncoder, AdminDAO adminDAO, JobSeekerDAO jobSeekerDAO, TimeSheetTrackerDAO timeSheetTrackerDAO, UserDAO userDAO) {
             Assert.notNull(userDAO, "UserDAO must not be null!");
             this.userDAO = userDAO;
             Assert.notNull(adminDAO, "AdminDAO must not be null!");
@@ -61,8 +60,6 @@ import workHours.entities.InterestedPartyDAO;
             Assert.notNull(interestedPartyDAO, "InterestedPartyDAO must not be null!");
             this.interestedPartyDAO = interestedPartyDAO;
 
-            Assert.notNull(roleTypeDAO, "RoleTypeDAO must not be null!");
-            this.roleTypeDAO = roleTypeDAO;
         }
 
         @RequestMapping(value = "/")
@@ -71,8 +68,6 @@ import workHours.entities.InterestedPartyDAO;
             Iterable<User> users = userDAO.findAll();
             model.addAttribute("users", users);
 
-            Iterable<RoleType> roleTypes = roleTypeDAO.findAll();
-            model.addAttribute("roleTypes", roleTypes);
 
             Iterable<JobSeeker> jobSeekers = jobSeekerDAO.findAll();  //pulling information to the same home page need logic for all db objects
             model.addAttribute("jobSeekers", jobSeekers);
@@ -98,8 +93,6 @@ import workHours.entities.InterestedPartyDAO;
             Iterable<User> users = userDAO.findAll();
             model.addAttribute("users", users);
 
-            Iterable<RoleType> roleTypes = roleTypeDAO.findAll();
-            model.addAttribute("roleTypes", roleTypes);
 
             return "admin/viewAllUsers";
         }
@@ -109,8 +102,6 @@ import workHours.entities.InterestedPartyDAO;
             User user = userDAO.findOne(id);
             userDAO.delete(user);
 
-            RoleType roleType = roleTypeDAO.findOne(id);
-            roleTypeDAO.delete(roleType);
 
             return new RedirectView("/admin/");
         }
@@ -122,16 +113,9 @@ import workHours.entities.InterestedPartyDAO;
 //        System.out.println("User ID is: " + userId); //used for debugging
             User user = userDAO.findOne(Long.valueOf(userId));  //changes string empID to long
             model.addAttribute("user", user);
-
-            RoleType roleType = roleTypeDAO.findOne(Long.valueOf(RoleT));
-            model.addAttribute("roleType", roleType);
+            model.addAttribute("roleTypes", RoleType.values());
 
 
-//        RoleType.RoleT roleType = roleTypeDAO.findOne(Long.valueOf(RoleType.RoleT));
-//        model.addAttribute("roleType", roleType);
-//        Admin admin = adminDAO.findOne(userId);
-//        adminModel.addAttribute("admin",admin);
-//        return "/admin/editUser";
             return "/admin/editUser";
         }
 
@@ -145,13 +129,12 @@ import workHours.entities.InterestedPartyDAO;
         //Initial Add New User - HomePage
         @RequestMapping(value = "addNewUser")
         public String addUser(ModelMap model) {
-//        model.addAttribute("roleTypes", RoleType.RoleT.values(RoleType)
-
+            model.addAttribute("roleTypes", RoleType.values());
             return "addUser";
         }
 
         @RequestMapping(value = "saveNewUser")
-        public View saveUser(String username, String password, String email, String RoleT) {
+        public View saveUser(String username, String password, String email) {
 
             User user = new User(username, passwordEncoder.encode(password), 1, email);
             userDAO.save(user);
@@ -160,13 +143,6 @@ import workHours.entities.InterestedPartyDAO;
             userRole.setUserid(user.getUserId());
             userRole.setRole("USER");
             userRoleDAO.save(userRole);
-
-            RoleType roleType = new RoleType();
-            roleTypeDAO.save(roleType);
-
-//        RoleType roleType1 = new RoleType();
-//        roleType1.setRoleType(RoleType.RoleT.valueOf(roleT));
-//        roleTypeDAO.save(roleType1);
 
 
             return new RedirectView("/admin/");

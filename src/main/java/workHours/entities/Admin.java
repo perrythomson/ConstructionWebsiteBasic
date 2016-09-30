@@ -47,7 +47,7 @@ public class Admin {
         this.email = email;
         this.salary = salary;
 //        roles.add(RoleType.USER);
-//        roles.add(RoleType.EMPLOYEE);
+        roles.add(RoleType.EMPLOYEE);
     }
 
     public Long getAdminID() {
