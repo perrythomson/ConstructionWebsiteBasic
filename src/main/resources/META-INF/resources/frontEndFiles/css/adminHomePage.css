@@ -41,7 +41,7 @@ th {
     color: Black;
     font-family: "Times New Roman";
     text-decoration: none;  /* no underline */
-    font-variant-caps: normal;
+    text-transform: uppercase;
 }
 
 table {

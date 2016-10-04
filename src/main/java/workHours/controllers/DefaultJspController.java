@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 import workHours.entities.*;
+import workHours.security.CustomUserDetails;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,15 +46,26 @@ public class DefaultJspController {
     }
 
     //this handles the role Type can put in foreman later
+//    @RequestMapping("/default")
+//    public String defaultAfterLogin(HttpServletRequest request) {
+//        if(request.isUserInRole("ADMIN")) {
+//            return "redirect:/admin/";
+//        }
+//        return "redirect:/user/";
+//    }
+
     @RequestMapping("/default")
     public String defaultAfterLogin(HttpServletRequest request) {
-        if(request.isUserInRole("ADMIN")) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+        if(user.getRoles().contains(RoleType.ADMIN)) {
             return "redirect:/admin/";
         }
-        return "redirect:/user/";
+        if(user.getRoles().contains(RoleType.EMPLOYEE)) {
+            return "redirect:/user/userHomePage";
+        }
+        return "home/homePage";
     }
-
-
 
 //    @RequestMapping(value="/logout")
 //    public String logout(HttpServletRequest request, HttpServletResponse response) {

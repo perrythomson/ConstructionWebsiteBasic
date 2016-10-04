@@ -188,7 +188,7 @@
 
 <div class="parentAdminTables">
 <div class="adminTables" ><table>
-    <th class="section_titles" >Employees</th>
+    <th class="section_titles" colspan="14" >Employees</th>
     <tr>
         <th> Emp-ID </th>
         <th> Edit-Emp </th>
@@ -231,7 +231,7 @@
 </table></div>
 
 <div class="adminTables"><table>
-    <th class="section_titles">Applicants</th>
+    <th class="section_titles" colspan="11" >Applicants</th>
     <tr>
         <th> Job Seeker ID </th>
         <th> </th>
@@ -266,7 +266,7 @@
 </table></div>
 
 <div class="adminTables"><table>
-    <th class="section_titles">Construction Bids</th>
+    <th class="section_titles" colspan="11" >Construction Bids</th>
     <tr>
         <th> Interested Party ID </th>
         <th> </th>
