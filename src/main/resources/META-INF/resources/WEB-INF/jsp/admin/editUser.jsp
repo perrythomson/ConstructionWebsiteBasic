@@ -16,8 +16,14 @@
     User ID: <input type="text" name="userId" value="<c:out value="${user.userId}" />" readonly /><br>
     Role Type: <select name="roleType">
     <c:forEach var="roleType" items="${roleTypes}">
-        <option value="<c:out value="${roleType}"/>"><c:out value="${roleType}"/></option></c:forEach>
+        <c:forEach var="userRole" items="${user.roles}">
+            <option <c:if test="${roleType eq userRole}"><c:out value="selected" /></c:if>
+                value="<c:out value="${roleType}"/>"><c:out value="${roleType}"/>
+            </option>
+        </c:forEach>
+    </c:forEach>
     </select><br>
+
     First Name: <input type="text" name="firstName" value="<c:out value="${user.firstName}" />" /><br>
     Last Name: <input type="text" name="lastName" value="<c:out value="${user.lastName}" />" /><br>
     Phone: <input type="text" name="phone" value="<c:out value="${user.phone}" />" /><br>

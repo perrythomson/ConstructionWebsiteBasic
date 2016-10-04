@@ -1,0 +1,101 @@
+h1, ul {
+    background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");
+    border: 2px solid #949599;
+    height: 35px;
+    width: calc(100% - 24px);
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    font-family: "Times New Roman";
+    text-decoration: none;  /* no underline */
+}
+
+ul {
+    bottom: 0px;
+    position: fixed;
+    width: calc(100% - 40px);
+    list-style-type: none;  /* gets rid of the bullet */
+}
+
+th {
+    border: 2px solid #949599;
+    background-color: greenyellow;
+    height: 25px;
+    width: calc(50% - 24px);
+    margin: 5px;
+    padding: 5px;
+    color: Black;
+    font-family: "Times New Roman";
+    text-decoration: none;  /* no underline */
+    font-variant-caps: normal;
+}
+
+table {
+    float:  left;}
+
+table, tr {list-style-type: none;
+    margin: 5px;
+    padding: 2px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+
+}
+tr:nth-child(even) {background-color: #f2f2f2}
+
+li a.two {
+    display: block;
+    width: auto;
+    opacity: 0.5;
+    background-color: black;
+    color: white;
+    padding: 8px;
+    display: inline;
+    float: left;
+    font-variant-caps: small-caps;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: grey;
+}
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+form {
+    margin: 5px;
+    position: absolute;
+    right: 8px;
+    left: auto;
+    top: 60px;
+    padding: 2px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+}
+
+/*.parentAdminTables {*/
+    /*height: 81%;*/
+    /*margin-top: 5px;*/
+    /*margin-bottom: 5px;*/
+    /*margin-left: 5px;*/
+/*}*/
+
+.adminTables {
+    width: calc(100% - 275px);
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+    border: 2px solid deepskyblue;
+    margin: 5px;
+
+}
+
+body  {
+    /*note this shows an error because we are not giving it a real url path but it works*/
+    background-color: #555555;
+    opacity: .8;
+}

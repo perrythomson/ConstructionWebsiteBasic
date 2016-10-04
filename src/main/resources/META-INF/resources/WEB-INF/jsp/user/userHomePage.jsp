@@ -13,7 +13,7 @@
 <h1>BFE Construction: User Home Page</h1>
 <table>
     <tr>
-        <th> User ID </th>
+        <th> Emp-ID </th>
         <th> Edit-Emp </th>
         <th> Role </th>
         <th> </th>
@@ -28,11 +28,13 @@
         <th> </th>
     </tr>
 
-    <c:forEach items="${users}" var="user">
+    <%--<c:forEach items="${users}" var="user">--%>
         <tr>
             <td align="center"><c:out value="${user.userId}" /></td>
-            <a href="/user/editUserContactInfo?userId=${user.userId}">Edit</a>
-            <td><c:out value="${roleType.roleType}" /></td>
+            <td align="center"><a href="/admin/editUser?userId=${user.userId}">EDIT</a></td>
+            <c:forEach items="${user.roles}" var="role">
+                <td><c:out value="${role}" /></td>
+            </c:forEach>
             <th>  </th>
             <td><c:out value="${user.firstName}" /></td>
             <td><c:out value="${user.lastName}" /></td>
@@ -45,12 +47,13 @@
             <th>  </th>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </tr>
-    </c:forEach>
+    <%--</c:forEach>--%>
 </table>
 
 <br><br>
 
-<form action="TimeSheet" method="post" action="/user/userTimeSheet">
+<%--<form action="TimeSheet" method="post" action="/user/userTimeSheet">--%>
+<form name = "TimeSheet" method="post" action="/user/userTimeSheet">
 
     <fieldset style="width: 80%">
         <h2>Weekly Time Sheet</h2>

@@ -1,5 +1,6 @@
 package workHours.entities;
 
+import javax.management.relation.Role;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -47,20 +48,21 @@ public class User implements Serializable {
         this.email = user.getEmail();
         this.password = user.getPassword();
         this.enabled = user.getEnabled();
+        this.roles = user.getRoles();
+
     }
 
-    public User(String userName, String password, int enabled, String email) {  //, String firstName, String lastName, String phone, String address, double salary
+    public User(String userName, String password, int enabled, String email, String firstName, String lastName, String phone, String address, double salary, RoleType roleType) {  //, String firstName, String lastName, String phone, String address, double salary
         this.userName = userName;
         this.password = password;
         this.enabled = enabled;
         this.email = email;
-        //TODO this errors out when I add this here...where is the correct place?
-//        this.firstName = firstName;
-//        this.lastName = lastName;
-//        this.phone = phone;
-//        this.address = address;
-//        this.salary = salary;
-//        roles.add(RoleType.EMPLOYEE);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.address = address;
+        this.salary = salary;
+        roles.add(roleType);
     }
 
     public static long getSerialVersionUID() {

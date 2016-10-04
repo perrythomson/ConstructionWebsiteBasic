@@ -1,0 +1,101 @@
+h1, ul {
+    background-image:  url("/frontEndFiles/pictures/Light-Wood-Background.jpg");
+    border: 2px solid #949599;
+    height: 35px;
+    width: calc(100% - 24px);
+    margin: 5px;
+    padding: 5px;
+    color: white;
+    font-family: "Times New Roman";
+    text-decoration: none;
+}
+
+ul {
+    bottom: 0px;
+    position: fixed;
+    width: calc(100% - 40px);
+    list-style-type: none;  /* gets rid of the bullet */
+}
+
+
+h2 {
+    font-family: cursive;
+    text-align: center;
+    font-size: 40px;
+    top: 5px;
+    /*position: absolute;*/
+    /*width: calc(100% - 24px);*/
+    margin: 0;
+}
+
+body  {
+    /*note this shows an error because we are not giving it a real url path but it works*/
+    background-image: url("/frontEndFiles/pictures/BFE_HomePage.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    /*opacity: 0.5;*/
+}
+
+
+form {
+    margin: 5px;
+    margin-bottom: 75px;
+    padding: 2px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+    width: 525px;
+    height: 440px;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+li a.two {
+    display: block;
+    width: auto;
+    opacity: 0.5;
+    background-color: black;
+    color: white;
+    padding: 8px;
+    display: inline;
+    float: left;
+    font-variant-caps: small-caps;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: grey;
+}
+.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.head_shot {
+    margin: 5px;
+    padding: 2px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+p {
+    background-color: lightblue;
+    opacity: 0.8;
+    padding: 2px;
+    font-family: cursive;
+    width: 350px;
+    position: absolute;
+    top: 55px;
+    left: 200px;
+}

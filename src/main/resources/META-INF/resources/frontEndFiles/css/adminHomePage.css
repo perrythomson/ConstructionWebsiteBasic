@@ -17,9 +17,23 @@ ul {
     list-style-type: none;  /* gets rid of the bullet */
 }
 
+/*table#t01 th, table#t02 th, table#t03 th {*/
+    /*background-color: lightblue;*/
+/*}*/
+
+.section_titles {
+    background-color: greenyellow;
+    margin: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Arial Black";
+    font-variant-caps: normal;
+
+}
+
 th {
     border: 2px solid #949599;
-    background-color: greenyellow;
+    /*background-color: greenyellow;*/
     height: 25px;
     width: calc(50% - 24px);
     margin: 5px;
@@ -42,7 +56,7 @@ table, tr {list-style-type: none;
     border-bottom: 1px solid #ddd;
 
 }
-tr:nth-child(even) {background-color: #f2f2f2}
+/*tr:nth-child(even) {background-color: deepskyblue}*/
 
 li a.two {
     display: block;
@@ -93,11 +107,14 @@ form {
     margin-top: 5px;
 }
 
+
+
 body  {
     /*note this shows an error because we are not giving it a real url path but it works*/
     background-color: #555555;
     opacity: .8;
 }
+
 /*li a {*/
     /*display: block;*/
     /*width: auto;*/

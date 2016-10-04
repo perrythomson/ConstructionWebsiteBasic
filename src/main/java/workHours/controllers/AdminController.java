@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashSet;
 import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -120,8 +121,12 @@ import workHours.entities.InterestedPartyDAO;
         }
 
         @RequestMapping(value = "saveEditedUser")
-        public View saveEditedUser(User user) {
+        public View saveEditedUser(User user, RoleType roleType) {
+            HashSet<RoleType> newRoles = new HashSet<RoleType>();
+            newRoles.add(roleType);
+            user.setRoles(newRoles);
             userDAO.save(user);
+
             return new RedirectView("/admin/");
         }
 
@@ -134,15 +139,17 @@ import workHours.entities.InterestedPartyDAO;
         }
 
         @RequestMapping(value = "saveNewUser")
-        public View saveUser(String username, String password, String email) {
+        public View saveUser(String username, String password, String email, String firstName, String lastName, String phone, String address, double salary, RoleType roleType) {
 
-            User user = new User(username, passwordEncoder.encode(password), 1, email);
+            User user = new User(username, passwordEncoder.encode(password), 1, email, firstName, lastName, phone, address, salary, roleType);
             userDAO.save(user);
 
-            UserRole userRole = new UserRole();
-            userRole.setUserid(user.getUserId());
-            userRole.setRole("USER");
-            userRoleDAO.save(userRole);
+//            UserRole userRole = new UserRole();
+//            userRole.setUserid(user.getUserId());
+//            userRole.setRole("USER");
+//            userRoleDAO.save(userRole);
+
+
 
 
             return new RedirectView("/admin/");

@@ -188,7 +188,7 @@
 
 <div class="parentAdminTables">
 <div class="adminTables" ><table>
-    <th>Employees</th>
+    <th class="section_titles" >Employees</th>
     <tr>
         <th> Emp-ID </th>
         <th> Edit-Emp </th>
@@ -211,8 +211,10 @@
             <%--<td><a href="/admin/viewUser?userID=${user.userID}"><c:out value="${user.userID}" /></a></td>--%>
             <td align="center"><c:out value="${user.userId}" /></td>
             <td align="center"><a href="/admin/editUser?userId=${user.userId}">EDIT</a></td>
-            <td><c:out value="${roleType.roleType}" /></td>
-                <th>  </th>
+                <c:forEach items="${user.roles}" var="role">
+                    <td><c:out value="${role}" /></td>
+                    <th>  </th>
+                </c:forEach>
             <td><c:out value="${user.firstName}" /></td>
             <td><c:out value="${user.lastName}" /></td>
                 <th>  </th>
@@ -229,7 +231,7 @@
 </table></div>
 
 <div class="adminTables"><table>
-    <th>Applicants</th>
+    <th class="section_titles">Applicants</th>
     <tr>
         <th> Job Seeker ID </th>
         <th> </th>
@@ -264,7 +266,7 @@
 </table></div>
 
 <div class="adminTables"><table>
-    <th>Construction Bids</th>
+    <th class="section_titles">Construction Bids</th>
     <tr>
         <th> Interested Party ID </th>
         <th> </th>

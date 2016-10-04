@@ -2,12 +2,15 @@ package workHours.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.View;
 import workHours.entities.*;
+import workHours.security.CustomUserDetails;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -58,8 +61,14 @@ public class UserController {
 
     @RequestMapping(value="userHomePage")
     public String timeEntry(ModelMap model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+        model.addAttribute("user", userDetails);
         return "user/userHomePage";
-        }
+    }
+//    public String timeEntry(ModelMap model) {
+//        return "user/userHomePage";
+//        }
 
 
 

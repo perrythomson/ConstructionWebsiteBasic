@@ -77,3 +77,9 @@ form {
     border-bottom: 1px solid #ddd;
     font-size: large;
 }
+
+body  {
+    /*note this shows an error because we are not giving it a real url path but it works*/
+    background-color: #555555;
+    opacity: .8;
+}
